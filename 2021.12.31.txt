@@ -21,15 +21,15 @@
 * Git github업로드 방법
 1. git 창 열기
 2. git config --global user.email "skwjdtn3171@naver.com"	# 이메일 등록
-3. △							# 불러오기
+3. △								# 불러오기
 4. git config --global user.name "JeongSooNa"			# Git 등록
-5. ssh-keygen -t rsa -C "skwjdtn3171@naver.com"		# 비밀번호 생성
-6. SSH and GPG keys					#
-7. SSH key 입력
-8. 올릴 파일이 있는 저장경로의 git 창 열기
-9. ls							# 저장경로의 파일 확인
-10. git init						# 
-11. git add .						#
+5. ssh-keygen -t rsa -C "skwjdtn3171@naver.com"			# 비밀번호 생성
+6. SSH and GPG keys						#
+7. SSH key 입력							#
+8. 올릴 파일이 있는 저장경로의 git 창 열기				#
+9. ls								# 저장경로의 파일 확인
+10. git init							# 
+11. git add .							#
 12. git commit -m "2021.12.31 강의"				# commit : pc에 저장
 13. git remote add origin https://github.com/JeongSooNa/DW_memo.git
 13. git push origin master
