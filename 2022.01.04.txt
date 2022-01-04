@@ -13,3 +13,12 @@ jdk가 설치 된 폴더 경로로 들어가기(C드라이브>Programfiles>Java>
 %JAVA_HOME%\bin\ > 확인
 cmd창 > javac 입력해서 나오는지 확인 > java -version 입력해서 나오는지 확인
 
+[Visual Studio Code 사용법]
+> 파일 생성
+> clone 으로 불러오기
+> 불러온 파일안에서 vscode 실행
+> 수정 후 commit > push to
+
+vscode 단축키
+> ctrl+shift+p display(언어설정)
+> ctrl+B (explorer창 여닫)
