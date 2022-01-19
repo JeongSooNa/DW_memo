@@ -15,7 +15,7 @@ public class Lotto {
 			}
 		}
 		int answer2 = (len+1)-collect-0;
-		if(answer2==len) --answer2;
+		if(answer2==len+1) --answer2;
 		int answer1 = (len+1)-collect-count;
 		int answer[]= {answer1,answer2};
 		return answer;
