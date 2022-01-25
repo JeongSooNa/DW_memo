@@ -12,6 +12,8 @@ public class 키패드누르기 {
 	
 	public static String solution(int[] numbers, String hand) {
         String answer = "";
+        
+        //이건 좌측,우측만 뽑...
         int[] array = new int[numbers.length];
         // left=-1 / right=1 로 지정하는 배열 생성
         for(int i=0;i<numbers.length;i++) {
@@ -22,8 +24,38 @@ public class 키패드누르기 {
         		array[i]=1;
         	}
         }
+        
+        // Show me what you got J_S
+        int array1[][] = new int[numbers.length][2];
+        int[][] keyArr = {{3,1},{0,0},{0,1},{0,2},{1,0},{1,1},{1,2},{2,0},{2,1},{2,2}};
+        for(int i=0;i<numbers.length;i++) {
+        	int l[] = {3,0};
+        	int r[] = {3,2};
+        	array1[i] = keyArr[numbers[i]];
+        	if(array1[i][1]==0) array[i]=-1;
+        	else if(array1[i][1]==2) array[i]=1;
+        	else {
+        		if(
+        		Math.abs(l[0]-array1[i][0])+Math.abs(l[1]-array1[i][1])
+        		>= Math.abs(r[0]-array1[i][0])+Math.abs(r[1]-array1[i][1])
+        		&& hand.equals(r)
+        		) {
+        			array[i]=1;
+        		}
+        		else array[i]=-1;
+        	}
+        	if(array[i]==-1) l=array1[i];
+        	if(array[i]==1) r=array1[i];
+        }
+        
+        for(int i : array) {
+        	System.out.println(i);
+        } //확인해보자 나오나
+        
         // 2/5/8/0 array 가 0일 때 오른손일까 왼손일까 확인하는 로직 생성
         // ...이걸 어떻게 해
+        
+        // 이렇게가 아니라 R L 따로 배열을 만들어야되나...
         
         // numbers : 순서대로 누를 번호가 담긴 배열
         // hand : 왼손,오른손 잡이 문자열 ("left" / "right")
@@ -35,8 +67,11 @@ public class 키패드누르기 {
 	public static void main(String[] args) {
 		int[] numbers = {1,3,4,5,8,2,1,4,5,9,5};
 		String hand = "right";
-		String result = solution(numbers,hand);
-		System.out.println(result);
+		solution(numbers,hand);
+//		String result = solution(numbers,hand);
+//		System.out.println(result);
 		// L R L L L R L L R! R L
+		
+		
 	}
 }
