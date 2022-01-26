@@ -1,13 +1,30 @@
 package Programmers;
 
+import java.sql.Array;
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class K번째수 {
 	
 	public static int[] solution(int[] array, int[][] commands) {
-		int[] answer = new int[3];
-        // i0~j0 중 k번째수 > answer[0]
+		int[] answer = new int[commands.length];
+		int[][] com = commands;
+		for(int i=0;i<commands.length;i++) {
+			com[i][0] = commands[i][0]-1;
+			com[i][1] = commands[i][1]-1;
+			com[i][2] = commands[i][2]-1;
+		}
+		for(int i=0;i<commands.length;i++) {
+			int[] arr = new int[com[i][1]-com[i][0]+1];
+			for(int j=0;j<arr.length;j++) {
+				arr[j]=array[com[i][0]+j];
+			}
+			Arrays.sort(arr);
+			answer[i]=arr[com[i][2]];
+		}
+        return answer;
+        //  100점!!!!!!!!
+        
+        /*
 		int i0 = commands[0][0]-1;
 		int j0 = commands[0][1]-1;
 		int k0 = commands[0][2]-1;
@@ -37,8 +54,9 @@ public class K번째수 {
 		answer[0] = array0[k0];
 		answer[1] = array1[k1];
 		answer[2] = array2[k2];
-        return answer;
-    } // 성공은 했는데 런타임error로 0점...
+         */
+        // 성공은 했는데 런타임error로 0점...
+    }
 	
 	
 	public static void main(String[] args) {
@@ -57,5 +75,8 @@ public class K번째수 {
 		System.out.println(result[0]);
 		System.out.println(result[1]);
 		System.out.println(result[2]);
+		
+		
+		
 	}
 }
