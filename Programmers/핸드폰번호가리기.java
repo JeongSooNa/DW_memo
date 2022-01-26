@@ -3,8 +3,11 @@ package Programmers;
 public class 핸드폰번호가리기 {
 	public static String solution(String phone_number) {
         String answer = "";
-        String endNum = phone_number.substring(phone_number.length()-4,phone_number.length());
-        for(int i=0;i<phone_number.length()-4;i++) {
+        int cutNum = 4;
+        int len = phone_number.length();
+        // 사용할 상수를 알아보기 쉽게 변수로 지정해주기!
+        String endNum = phone_number.substring(len-cutNum,len);
+        for(int i=0;i<len-cutNum;i++) {
         	answer += "*";
         }
         
