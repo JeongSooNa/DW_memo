@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 폴트 크기별로 작성할 수 있다. -->
+    <h1>안녕하세요</h1>
+    <h2>안녕하세요</h2>
+    <h3>안녕하세요</h3>
+    <h4>안녕하세요</h4>
+    <h5>안녕하세요</h5>
+    <h6>안녕하세요</h6>
+    <h1>오 아래 Live Server 누르면 실시간으로 바뛴다 저장하면 쩐다</h1>
+
+    <!-- a tag를 이용하여 주소바로가기 가능 -->
+    <a href="https://www.naver.com/">Naver</a>
+    <a href="https://github.com/JeongSooNa">JeongSoo GitHub</a>
+
+    <!-- input tag를 이용해 입력,글자수제한,고정표시문자,숫자만입력 등 가능 -->
+    <input type="text"></input>
+    <h4>같은 의미</h4>
+    아이디 : <input type="text" placeholder="아이디 입력 10글자제한" maxlength="10"/>
+    비밀번호 : <input type="password" placeholder="비밀번호 입력"/>
+    <input type="number" placeholder="숫자만 입력 가능">
+
+    <!-- 사진업로드 -->
+    <h3>파일 업로드</h3>
+    <input type="file">
+
+    <!-- 날짜 -->
+    <h3>날짜</h3>
+    <input type="date" />
+    <input type="month" />
+    <input type="week" />
+    <input type="time" />
+
+    <!-- 체크 -->
+    <h3>체크박스 만들기</h3>
+    <input type="checkbox">
+    <label for="checkkbox">사과</label>
+    <input type="checkbox">
+    <label for="checkkbox">키위</label>
+    <input type="checkbox"checked>
+    <label for="checkkbox">바나나</label>
+
+    <!-- 버튼 -->
+    <h3>버튼 만들기</h3>
+    <input type="button" value="old"/>
+    <button>new</button>
+
+    <!-- 선택 -->
+    <h3>선택박스 만들기</h3>
+    <select name="" id="">
+        <option value="">-- 사이즈를 선택하시오. --</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <!-- value안의 값이 최종적으로 DB에 저장 -->
+        <!-- 입력한 값들이 parameter라고 생각! -->
+    </select>
+
+    <!-- 이미지 tag -->
+    <h3>이미지 tag (저장경로에 이미지 저장 후)</h3>
+    <img src="img.jpg" alt="파이리">
+    <!-- alt : 사진의 text를 의미 -->
+    <!-- src : 저장되어있는 파일.확장자명 입력 -->
+
+    <!-- paragraphic -->
+    <h3>문단 tag</h3>
+    <p>사람이 지닌 고유한 향기는 사람의 말에서 뿜어져 나온다.</p>
+    <p>오늘 점심도 <span>에너지바</span>를 먹어야지?</p>
+    <!-- css로 강조 효과를 넣을 수 있다. -->
+    <!-- 문장을 쓸 때 감싸서 사용. -->
+
+    <!-- input 특징 조금 더 알아보기 -->
+    <h3>input high</h3>
+    <input type="text" id="userId"name="userId"value="hello" readonly/>
+    <!-- placeholder는 알려주는 값 value는 입력되어있는 값 -->
+    <!-- id,name,value : 속성 -->
+    <!-- id : 변수 이름 (중복 불가능)-->
+    <!-- name : 변수 이름 (중복 가능) -->
+    <!-- value : server에 전송 할 실제 data || default값 -->
+    <!-- readonly : 읽기만 가능. -->
+
+    <!-- input type은 한가지 종류만 올 수 있다. -->
+    <!-- 속성은 중복이 가능하다. -->
+    
+</body>
+</html>
