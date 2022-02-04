@@ -131,7 +131,11 @@
 ### :black_nib:IDE(통합 개발 환경)
 - ex) 이클립스, 인텔리제이(유료), 안드로이드 스튜디오, 파이참, egov...
 
-### :black_nib:
+### :black_nib:GET / POST ***
+- 서버에 데이터를 전송하는 방법.
+- http 메소드 종류 중에 해당함.
+- GET : public 전송
+- POST : private 전송
 
 ### :black_nib:
 
