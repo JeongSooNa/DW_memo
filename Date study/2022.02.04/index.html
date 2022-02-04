@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Tag Study</title>
+    <style>
+      table {
+        margin: auto;
+        box-shadow: 0 3px 7px grey;
+        background-color: white;
+      }
+
+      table:hover {
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      tr {
+        border: 1px solid #444444;
+      }
+
+      tr:nth-child(even) {
+        background-color: #eaeaeb;
+      }
+
+      thead {
+        box-shadow: 0 1px 5px grey;
+      }
+
+      th {
+        padding: 1rem 2rem;
+        letter-spacing: 0.4rem;
+        font-size: 1.2rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      td {
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form Tag</h1>
+    <form action="">
+      <!-- action ="웹서버 주소가 온다." -->
+
+      아이디 : <input type="text" />
+
+      비밀번호 : <input type="password" />
+
+      회원 이메일 : <input type="email" />
+
+      <input type="submit" />
+      <!-- 입력된 데이터를 해당 서버에 전송. -->
+    </form>
+
+    <h3>table Tag</h3>
+    <table>
+      <thead>
+        <!-- 컬럼 -->
+        <tr>
+          <!-- table의 제목(컬럼) -->
+          <!-- 행을 만들거야 -->
+          <th>출장비 내역</th>
+          <th>금액</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- data -->
+        <tr>
+          <!-- 해당 컬럼의 데이터 -->
+          <td>교통비</td>
+          <td>30,000</td>
+        </tr>
+        <tr>
+          <td>식비</td>
+          <td>100,000</td>
+        </tr>
+        <tr>
+          <td>숙박비</td>
+          <td>500,000</td>
+        </tr>
+      </tbody>
+      <!-- table의 맨 아래에 나오게하는 tag -->
+      <tfoot>
+        <tr>
+          <td>총 합계</td>
+          <td>630,000</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <h3>시간표 TABLE</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+          <th>일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">축구</td>
+          <td>농구</td>
+          <td>레슬링</td>
+          <td>MMA</td>
+          <td>복싱</td>
+          <td>야구</td>
+        </tr>
+        <tr>
+          <td>인바디체크</td>
+          <td>주짓수</td>
+          <td>씨름</td>
+          <td>유도</td>
+          <td>펜싱</td>
+          <td>명상</td>
+        </tr>
+        <tr>
+          <td rowspan="2">요가</td>
+          <td>탁구</td>
+          <td>배구</td>
+          <td>볼링</td>
+          <td>테니스</td>
+          <td>배드민턴</td>
+        </tr>
+        <tr>
+          <td>필라테스</td>
+          <td>소프트볼</td>
+          <td>피구</td>
+          <td>무에타이</td>
+          <td>킥복싱</td>
+          <td>당구</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 여기서부터 제출입니다!!!!! -->
+    <h3>해보자</h3>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">시간</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>오전반</td>
+          <td>11:00~12:00</td>
+          <td colspan="2">주짓수</td>
+          <td>레슬링</td>
+          <td colspan="2">주짓수</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>오후반</td>
+          <td>12:00~13:00</td>
+          <td colspan="5">서킷트레이닝</td>
+          <td rowspan="2">자유수련</td>
+        </tr>
+        <tr>
+          <td>키즈부</td>
+          <td>14:30~15:30</td>
+          <td colspan="2">주짓수</td>
+          <td>레슬링</td>
+          <td colspan="2">주짓수</td>
+        </tr>
+        <tr>
+          <td>저녁 1부</td>
+          <td>19:30~21:00</td>
+          <td colspan="2">주짓수</td>
+          <td>레슬링</td>
+          <td colspan="2">주짓수</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>저녁 2부</td>
+          <td>21:00~22:30</td>
+          <td colspan="2">주짓수</td>
+          <td>레슬링</td>
+          <td colspan="2">주짓수</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>자유트레이닝</td>
+          <td>22:30~23:30</td>
+          <td colspan="5">웨이트 훈련</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+      <!-- 완성! -->
+    </table>
+
+    <h3>羅正秀</h3>
+  </body>
+</html>
