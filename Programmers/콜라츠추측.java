@@ -1,22 +1,21 @@
-package Programmers;
+package programmers;
 
 public class 콜라츠추측 {
 	public static int solution(int num) {
         int answer = 0;
-        long count = 0;
-        while(num!=1) {
-        	if(num%2==0) num = num/2;
-        	else count = num*3+1;
-        	count++;
+        long num1 = (long)num;
+        while(num1!=1) {
+        	if(num1%2==0) num1 = num1/2;
+        	else num1 = num1*3+1;
+        	answer++;
         }
-        if(count>500) return -1;
-        answer = (int)count;
+        if(answer>500) return -1;
         return answer;
     }
-    // 어째서 런타임 오류가..
+    // n이 int형일 때 n=626331 일 경우 숫자범위를 벗어나 long형으로 type을 바꿔줘야함. 
 	
 	public static void main(String[] args) {
-		int x=8;
+		int x=626331;
 		System.out.println(solution(x));
 	}
 }
