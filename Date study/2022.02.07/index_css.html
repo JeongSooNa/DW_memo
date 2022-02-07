@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div 전체 스타일 변경 */
+        div {
+            background-color: blue;
+            color: purple;
+        }
+        /* class를 지정하여 특정 라인을 변경 */
+        .hello {
+            position: relative;
+            left: 100px;
+            width: 80%;
+            height: 100px;
+            background-color: hsl(27, 91%, 49%);
+        }
+        .hello1 {
+            position: relative;
+            left: 200px;
+            bottom: 100px;
+            width: 60%;
+            height: 80px;
+            background-color: rgb(251, 255, 0);
+            color: yellow;
+        }
+        .hello2 {
+            position: relative;
+            left: 300px;
+            bottom: 80px;
+            width: 40%;
+            height: 60px;
+            background-color: hsl(125, 100%, 50%);
+        }
+        .hello3 {
+            position: relative;
+            left: 400px;
+            height: 40px;
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS</h1>
+    <h3>만든 tag를 이동</h3>
+    <h3>color 등 꾸미기</h3>
+
+    <!-- div Tag 공간(구역)을 의미 -->
+    <div style="background-color: #ff0000;">안녕하세요</div>
+    <!-- 이렇게 사용하면 단점! -->
+    <!-- tag가 너무 길어짐. 보기좋게 간결화해야 함. -->
+    <div class="hello">안녕하세요</div>
+    <div class="hello1">안녕하세요</div>
+    <div class="hello2">안녕하세요</div>
+    <div class="hello3">안녕하세요</div>
+    <!-- div*3 등 *을 이용하면 tag여러개 생성 가능 -->
+
+    <!-- 웹사이트에서 F12를 눌러 핸드폰모양을 클릭하면 기종 별 확인 -->
+    
+    <!-- 위와 같이 했을때 Default Position이 이동불가. -->
+    <!-- TAg마다 position을 갖고있음 (Default : Static) -->
+
+
+</body>
+</html>
