@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* 전체를 의미 */
+    /* 여백 없애기 */
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        /* 배경화면 css */
+        .background{
+            width: 100%;
+            height: 100vh;
+            /* image 가져오기 */
+            background-image: linear-gradient(
+                rgba(239, 243, 242, 0.9),
+                rgba(12, 248, 154, 0.9)
+                ), url(background.jpg);
+            /* image 크기 맞춰주기 */
+            background-position: center;
+            /* 배경 투명도 조절 */
+            opacity: 0.99;
+            
+        }
+        .background p{
+            color: rgb(23, 228, 57);
+            font-size: 20px;
+            font-weight: 1000;
+            border: double darkgreen;
+            /* solid : 두꺼운 선
+               dotted : 점선
+               double : 겹선
+            */
+        }
+    </style>
+</head>
+<body>
+    <!-- 홈페이지의 팝업창,광고 등과 구분하기 위해서 container사용 -->
+    <div class="container">
+        <div class="background">
+            <p>안녕하세요.<br> 
+                저는 오늘 계란 두 개를 먹고 왔습니다.<br>
+                맛있어요 :)
+            </p>
+        </div>
+    </div>
+    <div class="광고">
+
+    </div>
+</body>
+</html>
