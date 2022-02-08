@@ -2,10 +2,8 @@
 
 ### 2021.12.31 ~ 2022.07.20
 
-Programmers Cording
-
+## Programmers Cording
 ### JAVA
 https://github.com/JeongSooNa/DW_memo/search?l=java
-
 ### SQL
 https://github.com/JeongSooNa/DW_memo/search?l=SQL
