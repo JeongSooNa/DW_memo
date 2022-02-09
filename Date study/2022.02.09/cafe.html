@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .cafe-form {
+            width: 80%;
+            height: auto;
+            border: 3px solid rgb(49, 49, 47);
+            margin: 5% auto 0;
+            padding: 30px;
+            border-radius: 10px;
+            background-image: url(building.jpg);
+            background-position: center;
+        }
+        .cafe-form form{
+            margin: 30px;
+            background-color: rgba(100, 100, 96, 0.479);
+        }
+        .cafe-form h2 {
+            width: auto;
+            background-color: #85848481;
+            color: azure;
+            margin: 0px 30%;
+            padding: 20px 0px 20px 50px;
+        }
+        .cafe-form h4 {
+            width: auto;
+            background-color: #85848481;
+            color: azure;
+            margin-top: 0;
+            padding: 20px 0px 20px 50px;
+        }
+        .cafe-form h5 {
+            width: auto;
+            background-color: #85848481;
+            color: rgb(212, 190, 203);
+            margin-top: 20px;
+            padding: 20px 0px 20px 30px;
+        }
+        .cafe-form select{
+            margin-top: 20px;
+            margin-left: 30px;
+            font-size: large;
+            color: aliceblue;
+            background-color: rgba(72, 75, 75, 0.589);
+            padding: 10px;
+        }
+        .cafe-form input{
+            margin: 20px;
+            width: 50px auto;
+            height: 30px;
+        }
+        .cafe-form p{
+            padding: 20px 20%;
+            color: aliceblue;
+        }
+        .cafe-form button{
+            margin: 20px 20%;
+            width: 300px;
+            height: 30px;
+            cursor: pointer;
+            background-color: rgba(255, 228, 196, 0.527);
+        }
+        
+    </style>
+    <script>
+        function order(){
+            alert('주문 완료!');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="cafe-form">
+            <h2>카페 메뉴 선택</h2><br>
+            <form action="">
+                <h4>COFFEE</h4>
+                <select name="" id="">
+                    <option value="">--커피를 선택하시오.--</option>
+                    <option value="">AMERICANO</option>
+                    <option value="">LATTE</option>
+                </select>
+                <select name="" id="">
+                    <option value="">--선택 1.--</option>
+                    <option value="">ICE</option>
+                    <option value="">HOT</option>
+                </select>
+                <select name="" id="">
+                    <option value="">--선택 2.--</option>
+                    <option value="">Syrup O</option>
+                    <option value="">Syrup X</option>
+                </select>
+                <br><br>
+                <h4>BEVARAGE</h4>
+                <select name="" id="">
+                    <option value="">--음료를 선택하시오.--</option>
+                    <option value="">LEMONADE</option>
+                    <option value="">ICE TEA</option>
+                </select>
+                <select name="" id="">
+                    <option value="">--선택 1.--</option>
+                    <option value="">ICE</option>
+                    <option value="">HOT</option>
+                </select>
+                <select name="" id="">
+                    <option value="">--선택 2.--</option>
+                    <option value="">Syrup O</option>
+                    <option value="">Syrup X</option>
+                </select>
+                <br><br>
+                <h4>DISERT</h4>
+                <select name="" id="">
+                    <option value="">--디저트를 선택하시오.--</option>
+                    <option value="">LEMONADE</option>
+                    <option value="">ICE TEA</option>
+                </select>
+                <select name="" id="">
+                    <option value="">--선택--</option>
+                    <option value="">CAKE</option>
+                    <option value="">MACARONG</option>
+                    <option value="">COOKIE</option>
+                    <option value="">PUDING</option>
+                </select>
+                <br><br>
+                
+                <h4>TAKE OUT</h4>
+                <input type="text" value="Take Out 하시겟습니까?" disabled><input type="checkbox">
+                <h4>MEMBERSHIP POINT</h4>
+                <input type="number" placeholder="전화번호를 입력하세요.">
+                
+
+                <h4>인사말</h4>
+                <p>
+                    <br>
+                    안녕하세요. DW CAFE 입니다.<br>
+                    아메리카노 좋아 좋아 좋아<br>
+                    박수 짝짝
+                </p>
+                <button onclick="order();">주문</button>
+                <h5>나정수</h5>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>
