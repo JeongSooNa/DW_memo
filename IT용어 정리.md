@@ -137,7 +137,7 @@
 - GET : public 전송
 - POST : private 전송
 
-### :black_nib:
+### :black_nib: 검색엔진 (SEO)
 
 ### :black_nib: 참고페이지 : https://www.w3schools.com/default.asp
 - JAVA BASIC 공부하기 좋음!
