@@ -138,6 +138,8 @@
 - POST : private 전송
 
 ### :black_nib: 검색엔진 (SEO)
+- 시메틱 테그를 사용하면 검색엔진에서 사용 용이
+- 크롤링 : 사이트의 데이터를 수집
 
 ### :black_nib: 참고페이지 : https://www.w3schools.com/default.asp
 - JAVA BASIC 공부하기 좋음!
