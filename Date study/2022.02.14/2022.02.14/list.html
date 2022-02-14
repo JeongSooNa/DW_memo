@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .tray{
+            margin-left: 50px;
+            margin: 100px;
+            width: 200px;
+            height: auto;
+            border: solid black;
+        }
+        .arr{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .arr li{
+            width: 100%;
+            font-weight: 700;
+            border: solid black;
+            list-style: none;
+        }
+        .arr P{
+            padding: 0 50%;
+        }
+        .tray2{
+            margin-left: 50px;
+            margin: 100px;
+            width: 200px;
+            height: auto;
+            border: solid black;
+        }
+        .arr2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .arr2 li{
+            width: 100%;
+            height: 40px;
+            font-weight: 700;
+            border: solid black;
+            list-style: none;
+        }
+        .arr2 P{
+            padding: 0 50% 0;
+        }
+        .thi{
+            display: flex;
+            flex-direction: row;
+        }
+        .thi p{
+            background-color: black;
+            width: auto;
+            height: auto;
+            color: white;
+            padding: 0 5% 0;
+            margin: 10px;
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tray">
+            <ul class="arr">
+                <li><P>1</P></li>
+                <li><P>2</P></li>
+                <li><P>3</P></li>
+                <li><P>4</P></li>
+                <li><p>5</p></li>
+            </ul>
+        </div>
+        <div class="tray2">
+            <ul class="arr2">
+                <li><P>1</P></li>
+                <li><P>2</P></li>
+                <li class="thi">
+                    <p>3-1</p>
+                    <p>3-2</p>
+                    <p>3-3</p>
+                </li>
+                <li><P>4</P></li>
+                <li><p>5</p></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
