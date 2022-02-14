@@ -11,6 +11,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+        .container{
+            background-image: url(backpurple1.jpg);
+        }
         .header{
             background-color: black;
             display: flex;
@@ -18,7 +21,8 @@
             width: 100%;
             height: 100px;
             color: white;
-            padding: 25px
+            padding: 25px;
+            opacity: 0.8;
         }
         .logo{
             position: relative;
@@ -39,10 +43,16 @@
         .nav{
             background-color: rgba(0, 0, 0, 0.836);
             width: 100%;
-            height: 60px;
+            height: 85px;
             display: flex;
             flex-direction: row;
             padding: 10px;
+            opacity: 0.8;
+        }
+        .nav li:hover{
+            background-color: black;
+            height: auto;
+            border-radius: 10px;
         }
         .navi{
             display: flex;
@@ -50,8 +60,9 @@
             padding: 10px;
         }
         .navi li{
-            padding: 0 50px;
+            padding: 10px 30px;
             list-style: none;
+            
         }
         .navi a{
             text-decoration: none;
@@ -62,11 +73,10 @@
             margin: 0 50px 0;
             display: flex;
             flex-direction: row;
+            text-align: center;
         }
-        .navi1:hover{
-            background-color: black;
-            width: 100%;
-            height: 100%;
+        .navi1 img{
+            width: 40px;
         }
         .navi1 li{
             padding: 0 20px;
@@ -78,7 +88,7 @@
             font-size: 15px;
         }
         .main{
-            background-color: rgba(0, 0, 0, 0.726);
+            /* background-color:rgba(0, 0, 0, 0.726); */
             height: 100vh;
             display: flex;
             flex-direction: row;
@@ -89,6 +99,24 @@
             background-color: rgba(0, 0, 0, 0.712);
             margin: 10px;
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0.8;
+        }
+        .category h4{
+            color: white;
+            margin: 10px auto;
+            text-align: center;
+        }
+        .category li{
+            margin: 30px 5px;
+            list-style: none;
+            font-size: small;
+            color: white;
+        }
+        .category a{
+            text-decoration: none;
+            color: white;
         }
         .footer{
             background-color: rgb(0, 0, 0);
@@ -97,7 +125,7 @@
             width: 100%;
             height: 50px;
             color: white;
-            padding: 30px
+            padding: 30px;
         }
     </style>
 </head>
@@ -122,14 +150,26 @@
                 <li><a href="">PROJECT</a></li>
             </ul>
             <ul class="navi1">
-                <li><a href="">insta</a></li>
-                <li><a href="">github</a></li>
+                <li><a href=""><img src="insta.png" alt="">94__jeongsoo</a></li>
+                <li><a href="https://github.com/JeongSooNa"><img src="github.png" alt="">JeongSooNa</a></li>
             </ul>
         </div>
         <!-- main -->
         <div class="main">
             <div class="category">
-
+                <ul>
+                    <h4>CATEGORY</h4>
+                    <li><a href="">This</a></li>
+                    <li><a href="">is</a></li>
+                    <li><a href="">Sparta</a></li>
+                    <li><a href="">.</a></li>
+                    <li><a href="">.</a></li>
+                    <li><a href="">Ah</a></li>
+                    <li><a href="">Woo</a></li>
+                    <li><a href="">Ah</a></li>
+                    <li><a href="">Woo</a></li>
+                    <li><a href="">!</a></li>
+                </ul>
             </div>
         </div>
         <!-- footer -->
