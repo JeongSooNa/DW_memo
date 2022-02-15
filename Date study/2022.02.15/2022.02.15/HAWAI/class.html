@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header{
+            width: 100%;
+            height: 50vh;
+            position: relative;
+            z-index: 1;
+        }
+        .header::after{
+            width: 100%;
+            height: 100%;
+            content: "";
+            background-image: url(hawai.jpg);
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .nav{
+            width: 100%;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.253);
+            position: relative;
+        }
+        .nav img{
+            position: absolute;
+            width: 100px;
+            top: 20%;
+            left: 50px;
+        }
+        .nav-lines ul{
+            position: absolute;
+            right: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        .nav-lines li{
+            margin: 50px 30px;
+            list-style: none;
+            text-align: center;
+        }
+        .nav-lines li:hover{
+            width: 120px;
+            height: 100%;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.281);
+        }
+        .nav-lines a{
+            color: white;
+            font-weight: 800;
+            font-size: 30px;
+            text-decoration: none;
+            -webkit-text-stroke-width: 1px;
+	        -webkit-text-stroke-color: black
+        }
+        .textbox{
+            text-align: center;
+            color: white;
+            -webkit-text-stroke-width: 1px;
+	        -webkit-text-stroke-color: black
+        }
+        .textbox h1{
+            font-size: 80px;
+            margin: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            letter-spacing: 10px;
+        }
+        .textbox p{
+            font-size: 20px;
+            font-weight: 800;
+            margin: 20px;
+        }
+        .textbox a{
+            border: solid white;
+            border-radius: 10px;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+        }
+        .main{
+            width: 100%;
+            height: 80vh;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: row;
+        }
+        .main::after{
+            width: 100%;
+            height: 100%;
+            content: "";
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .menu{
+            width: 20%;
+            height: 97%;
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.329);
+            border-radius: 10px;
+        }
+        .menu h1{
+            color: white;
+            text-align: center;
+        }
+        .now{
+            margin: 10px;
+        }
+        .now h2{
+            text-align: center;
+            margin: 20px;
+            border: solid white;
+            border-radius: 10px;
+            color: white;
+        }
+        .adress{
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .adress a{
+            text-decoration: none;
+            margin: 10px;
+            color: white;
+        }
+        .categories{
+            margin: 10px;
+        }
+        .categories li{
+            margin: 40px 10px;
+            list-style: none;
+        }
+        .categories a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .post{
+            width: 75%;
+            height: 97%;
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.329);
+            border-radius: 10px;
+        }
+        .post-title{
+            text-align: center;
+            margin: 30px;
+        }
+        .post-title h1{
+            color: white;
+        }
+        .post table{
+            width: 600px;
+            height: 40%;
+            color: white;
+            margin: 0 auto 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.329);
+            table-layout: fixed;
+            border: solid;
+            border-radius: 10px;
+        }
+        .post tr{
+            text-align: center;
+        }
+        .post td{
+            table-layout: fixed;
+            border: 1px solid white;
+        }
+        .h2 {
+            width: 250px;
+        }
+        .card{
+            width: 97%;
+            height: 280px;
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.219);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+        .item{
+            position: relative;
+            width: 30%;
+            margin: 10px;
+            border: solid white;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transform: scale(1);
+            transition: 0.5s;
+        }
+        .item img{
+            position: absolute;
+            margin: 50px 10px;
+            width: 90%;
+            height: 75%;
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+        .item:hover{
+            transform: scale(0.8);
+        }
+        .item:hover img{
+            display: none;
+        }
+        .caption{
+            margin: 30px auto;
+            font-size: 20px;
+            color: white;
+            display: none;
+        }
+        .item:hover .caption{
+            display: block;
+        }
+        
+        .footer{
+            height: 50px;
+            width: 100%;
+            background-color: black;
+            color: white;
+        }
+        </style>
+        <script>
+            setInterval(function(){
+                
+            var timer = new Date();
+            var h = timer.getHours();
+            var m = timer.getMinutes();
+            var s = timer.getSeconds();
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+        },1000);
+        </script>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <!-- logo / menu -->
+                    <div class="nav">
+                <img src="icon.png" alt="">
+                <div class="nav-lines">
+                    <ul>
+                        <li><a href="#">코코넛</a></li>
+                        <li><a href="#">야자수</a></li>
+                        <li><a href="#">노을</a></li>
+                        <li><a href="#">해변</a></li>
+                        <li><a href="#">칵테일</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="textbox">
+                <h1>HAWAI</h1>
+                <p>
+                    네가 가라 하와이<br>
+                    그래 내가 갈게<br>
+                    몇 년 있다 보자
+                </p>
+                <!-- link tag를 버튼처럼 꾸미기 -->
+                <a href="#">프로그램 소개</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="menu">
+                <div class="now">
+                    <h1>
+                        현재시각
+                    </h1>
+                    <h2 id="clock"></h2>
+                </div>
+                <div class="adress">
+                    <h1>SITE</h1>
+                    <a href="#">GITHUB</a>
+                    <a href="#">BLOG</a>
+                </div>
+                <div class="categories">
+                    <ul>
+                        <h1>MENU</h1>
+                        <li><a href="">1.</a></li>
+                        <li><a href="">2.</a></li>
+                        <li><a href="">3.</a></li>
+                        <li><a href="">4.</a></li>
+                        <li><a href="">5.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post-title">
+                    <h1>시간표</h1>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="h2" colspan="2">시간</th>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1교시</td>
+                            <td>09:00~09:50</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td rowspan="4">자습</td>
+                            <td>HTML</td>
+                        </tr>
+                        <tr>
+                            <td>2교시</td>
+                            <td>10:00~10:50</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                        </tr>
+                        <tr>
+                            <td>3교시</td>
+                            <td>11:00~11:50</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                        </tr>
+                        <tr>
+                            <td>4교시</td>
+                            <td>12:00~12:50</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                            <td>HTML</td>
+                        </tr>
+                        <tr>
+                            <td>점심시간</td>
+                            <td>12:50~13:40</td>
+                            <td colspan="5">점심시간</td>
+                        </tr>
+                        <tr>
+                            <td>5교시</td>
+                            <td>13:40~14:30</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                            <td rowspan="3">자습</td>
+                            <td>SQL</td>
+                        </tr>
+                        <tr>
+                            <td>6교시</td>
+                            <td>14:40~15:30</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                        </tr>
+                        <tr>
+                            <td>7교시</td>
+                            <td>15:40~16:30</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                            <td>SQL</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card">
+                    <div class="item">
+                        <h1>SOCCER</h1>
+                        <img src="soccer.jpg" alt="">
+                        <p class="caption">
+                            나는 9살 때 부터<br>
+                            축구를 시작했다<br><br>
+                            축구는 재밌다.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h1>RUNNING</h1>
+                        <img src="running.jpg" alt="">
+                        <p class="caption">
+                            하루 30분 이상<br>
+                            런닝을 한다.<br><br>
+                            살은 안 빠진다.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h1>BOARD</h1>
+                        <img src="snowboard.jpg" alt="">
+                        <p class="caption">
+                            어려서 부터<br>
+                            스노우보딩을 했다.<br><br>
+                            또 가고싶다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>여기는 FOOTER BAR 입니다.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* container 에 background 투명도 넣어 세팅하기 */
+        .container{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        .container::after{
+            width: 100%;
+            height: 100%;
+            content: "";
+            background-image: url(modern.jpg);
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .header{
+            width: 100%;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.452);
+        }
+        .title{
+            display: flex;
+            flex-direction: row;
+        }
+        .title img{
+            width: 100px;
+            margin: 10px;
+        }
+        .title h1{
+            margin: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .main{
+            width: 100%;
+            height: 100%;
+            margin: 5px;
+            background-color: rgba(0, 0, 0, 0.185);
+            border-radius: 10px;
+        }
+        .ex{
+            width: 100%;
+            height: 50px;
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.185);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <img src="icon.png" alt="">
+                <h1>Jeong Soo Na</h1>
+            </div>
+        </div>
+        <div class="main">
+            <div class="ex">
+                <h1>나의 스포츠</h1>
+            </div>
+            <div class="card">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
