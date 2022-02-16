@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header{
+            display: flex;
+            flex-direction: row;
+        }
+        .logo{
+            position: fixed;
+        }
+        .logo img{
+            z-index: 1;
+            width: 80px;
+            margin: 0 90px;
+        }
+        .side-nav{
+            z-index: -1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: skyblue;
+            padding: 30px 20px;
+        }
+        .nav-link{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .nav-link li{
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .nav-link a{
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            padding: 5px;
+        }
+        .nav-link li:hover{
+            transition: 0.5s;
+            height: 31px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.26);
+        }
+        .nav-link i{
+            margin: 10px;
+        }
+        .main{
+            width: auto;
+            height: 200vh;
+            background-color: rgba(0, 0, 0, 0.377);
+            margin-left: 250px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/ec2e6610a2.js"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="icon.png" alt="">
+            </div>
+            <div class="side-nav">
+                <ul class="nav-link">
+                    <li><a href="">
+                        <i class="fa-solid fa-house"></i>HOME
+                    </a></li>
+                    <li><a href="">
+                        <i class="fa-solid fa-comment-dots"></i>MESSAGE
+                    </a></li>
+                    <li><a href="">
+                        <i class="fa-solid fa-gear"></i>SETTING
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+
+        </div>
+    </div>
+</body>
+</html>
