@@ -4,3 +4,10 @@
 3. 새로운 클래스는 Main 클래스 위에 써주기 (인식못함) 
 4. 입력받는 것은 하나만 사용하기...(Scanner 이나 BufferedReader..)
 5. 배열크기가 넘쳐서
+
+### GitHub Project 사용법!
+1. 새로운 Repositories 생성
+2. Settings
+3. Collaborators / Add peple
+4. 같이 project 할 사람의 주소나 이름으로 초대.
+5. Pull Push 하며 Project 수행.
