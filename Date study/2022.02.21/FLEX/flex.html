@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+        }
+        .row-col{
+            display: flex;
+            flex-direction: column;
+        }
+        .flex{
+            width: 90%;
+            height: 200px;
+            background-color: black;
+            margin: 0 auto 30px;
+            justify-content: space-between;
+        }
+        .item{
+            flex-basis: 10%;
+            height: 160px;
+            background-color: aqua;
+            margin: 20px;
+        }
+        .flex:nth-child(2) .item:nth-child(1){
+            flex-grow: 2;
+            background-color: bisque;
+        }
+        .bar{
+            height: 30px;
+            margin: 30px;
+            background-color: black;
+            animation: bar 300s linear infinite;
+        }
+        .bar:nth-child(2){
+            animation: bar2 300s linear infinite;
+        }
+        @keyframes bar{
+            0%{
+                width: 1%;
+                background-color: black;
+            }
+            50%{
+                width: 50%;
+                background-color: red;
+            }
+            100%{
+                width: 1%;
+                background-color: black;
+            }
+        }
+        @keyframes bar2{
+            0%{
+                width: 1%;
+                background-color: black;
+            }
+            50%{
+                width: 90%;
+                background-color: blue;
+            }
+            100%{
+                width: 1%;
+                background-color: black;
+            }
+        }
+        .item-bar{
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            background-color: brown;
+            animation: bar3 60s linear infinite;
+        }
+        @keyframes bar3{
+            0%{
+                width: 0%;
+                height: 0%;
+            }
+            100%{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row flex">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="row flex">
+            <div class="item">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="row flex">
+            <div class="item-bar"></div>
+        </div>
+    </div>
+</body>
+</html>
