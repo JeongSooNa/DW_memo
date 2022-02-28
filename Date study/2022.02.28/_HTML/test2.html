@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+        }
+        .row-col{
+            display: flex;
+            flex-direction: column;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            position: relative;
+        }
+        .container::after{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            content: "";
+            background-image: url(img/nowar.jpg);
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        .header{
+            width: 80%;
+            height: auto;
+            background-color: rgba(0, 0, 0, 0.445);
+            margin: auto;
+            justify-content: space-around;
+        }
+        .box{
+            width: 20%;
+            height: 200px;
+            border: 10px solid red;
+            background-color: brown;
+            border-radius: 10px;
+            margin: 50px 0;
+            align-items: center;
+            cursor: pointer;
+        }
+        .box:hover{
+            transition: 0.5s;
+            transform: scale(0.8) rotate(0.02turn);
+        }
+        .box p{
+            display: none;
+        }
+        .box:hover p{
+            display: block;
+        }
+        .box h1{
+            display: none;
+        }
+        .box:hover h1{
+            display: block;
+        }
+        .box img{
+            width: 80%;
+        }
+        .main{
+            width: 100%;
+            height: 70%;
+            position: relative;
+        }
+        .tank{
+            position: absolute;
+            width: 300px;
+            left: 0;
+            bottom: 0;
+            animation: tank 30s linear infinite;
+            opacity: 0.5;
+        }
+        .fire{
+            position: absolute;
+            width: 200px;
+            left: 0;
+            bottom: 0;
+            animation: fire 10s steps(2) infinite;
+            opacity: 0.5;
+        }
+        @keyframes tank{
+            0%{
+                left: 0%;
+                bottom: 10%;
+            }
+            25%{
+                left: 30%;
+                bottom: 5%;
+                transform: rotate(-0.05turn);
+            }
+            50%{
+                left: 60%;
+                bottom: 10%;
+                transform: rotate(0.05turn);
+            }
+            75%{
+                left: 30%;
+                bottom: 15%;
+                transform: rotate(-0.05turn);
+            }
+        }
+        @keyframes fire{
+            0%{
+                left: 0%;
+                top: 30%;
+                transform: scale(1);
+            }
+            10%{
+                left: 16%;
+                top: 60%;
+                transform: scale(0.5);
+            }
+            20%{
+                left: 32%;
+                top: 30%;
+                transform: scale(1);
+            }
+            30%{
+                left: 48%;
+                top: 60%;
+                transform: scale(0.5);
+            }
+            40%{
+                left: 64%;
+                top: 30%;
+                transform: scale(1);
+            }
+            50%{
+                left: 80%;
+                top: 60%;
+                transform: scale(0.5);
+            }
+            60%{
+                left: 64%;
+                top: 30%;
+                transform: scale(1);
+            }
+            70%{
+                left: 48%;
+                top: 60%;
+                transform: scale(0.5);
+            }
+            80%{
+                left: 32%;
+                top: 30%;
+                transform: scale(1);
+            }
+            90%{
+                left: 16%;
+                top: 60%;
+                transform: scale(0.5);
+            }
+            100%{
+                left: 0%;
+                top: 30%;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="row-col box">
+                <img src="img/fire.png" alt="">
+                <h1>Please</h1>
+                <p>Russia</p>
+            </div>
+            <div class="row-col box">
+                <img src="img/fire.png" alt="">
+                <h1>Stop</h1>
+                <p>attack</p>
+            </div>
+            <div class="row-col box">
+                <img src="img/fire.png" alt="">
+                <h1>War</h1>
+                <p>Ukraine</p>
+            </div>
+        </div>
+        <div class="main">
+            <img class="tank" src="img/tank.png" alt="">
+            <img class="fire" src="img/fire.png" alt="">
+        </div>
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
