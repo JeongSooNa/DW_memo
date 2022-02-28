@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+        }
+        .row-col{
+            display: flex;
+            flex-direction: column;
+        }
+        .header{
+            width: 100%;
+            height: 300px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.233);
+        }
+        .black1{
+            background-color: black;
+            width: 80%;
+            height: 70%;
+        }
+        .main{
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+        }
+        .black2{
+            background-color: black;
+            width: 80%;
+            height: 30%;
+            margin: 30px;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .cards{
+            width: 25%;
+            height: 80%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="black1"></div>
+        </div>
+        <div class="row main">
+            <div class="row black2">
+                <div class="cards"></div>
+                <div class="cards"></div>
+                <div class="cards"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
