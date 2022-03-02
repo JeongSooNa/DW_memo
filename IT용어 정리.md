@@ -43,7 +43,9 @@
 
 
 ### :black_nib:IP(Internet Protocol)
-- 인터넷을 사용하기위해 사용하는 특수한 번호. (집주소 처럼 변경 가능!)    cmd > ipconfig (IP 확인)
+- 인터넷을 사용하기위해 사용하는 특수한 번호. (집주소 처럼 변경 가능!)
+- cmd > ipconfig (IP 확인)
+- 논리적인 주소
 
 
 ### :black_nib:라우터
@@ -141,5 +143,10 @@
 - 시메틱 테그를 사용하면 검색엔진에서 사용 용이
 - 크롤링 : 사이트의 데이터를 수집
 
-### :black_nib: 참고페이지 : https://www.w3schools.com/default.asp
-- JAVA BASIC 공부하기 좋음!
+### :black_nib: DHCP
+- IP가 유동적으로 바뀜
+- 학교, 카페, 회사 등등
+
+### :black_nib: STATIX IP
+- 고정 IP
+- 만든 서비스를 제공해야할 때. (IP가 바뀌면 제공이 어렵기 때문에)
