@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+        }
+        .row-col{
+            display: flex;
+            flex-direction: column;
+        }
+        .header{
+            width: 100%;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.329);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header h1{
+            color: white;
+            letter-spacing: 40px;
+        }
+        .section{
+            background-color: #777;
+            width: 80%;
+            height: 700px;
+            margin: 30px auto;
+            /* 2차원 UI 구현 */
+            display: grid;
+            /* 
+                grid 안의 item 크기 조절 
+                repeat(x,y)
+                x : 반복횟수
+                y : 값(크기에 대한)
+                minmax() : 최소/최대 크기 조절
+                1fr(fraction) : grid 안에있는 item 크기 모두 동일하게(flex : 1 과 동일)
+            */
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            grid-gap: 40px;
+        }
+        .item{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.418);
+            border: 2PX solid BLACK;
+            border-radius: 10px;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+        }
+        .item:hover{
+            transition: 0.3s;
+            transform: scale(0.9);
+        }
+        .item img{
+            position: absolute;
+            width: 70%;
+            height: 90%;
+            opacity: 0.6;
+        }
+        .item h1{
+            z-index: 1;
+            letter-spacing: 10px;
+        }
+        .item p{
+            z-index: 1;
+            font-weight: 600;
+        }
+        .item a{
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>독도는 우리 땅</h1>
+        </div>
+        <div class="section">
+            <div class="row-col item">
+                <img src="img/field.jpg" alt="">
+                <h1>Field</h1>
+                <p>우리 땅 한반도</p>
+                <a href="./sub.html">naver</a>
+            </div>
+            <div class="row-col item">
+                <img src="img/mountain.jpg" alt="">
+                <h1>Mountain</h1>
+                <p>우리 산 백두산</p>
+            </div>
+            <div class="row-col item">
+                <img src="img/island.jpg" alt="">
+                <h1>Island</h1>
+                <p>우리 섬 독도</p>
+            </div>
+            <div class="row-col item">
+                <img src="img/sea.jpg" alt="">
+                <h1>Sea</h1>
+                <p>우리 바다 동해</p>
+            </div>
+            <div class="row-col item">
+                <img src="img/kor.png" alt="">
+                <h1>독도</h1>
+                <p>독도는 우리 땅</p>
+            </div>
+            <div class="row-col item">
+                <img src="img/kor.png" alt="">
+                <h1>독도</h1>
+                <p>독도는 우리 땅</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

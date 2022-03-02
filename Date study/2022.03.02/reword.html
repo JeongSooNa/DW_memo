@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+        }
+        .row-col{
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            margin: 40px;
+            text-align: center;
+        }
+        .section{
+            justify-content: space-around;
+        }
+        .card{
+            width: 20%;
+            height: 400px;
+            background-color: black;
+            border-radius: 20px;
+            color: white;
+            padding: 20px;
+        }
+        .card h1{
+            font-size: 25px;
+            text-align: center;
+        }
+        .card h2{
+            font-size: 30px;
+            text-align: center;
+        }
+        .card span{
+            font-size: 15px;
+        }
+        .card ul{
+            margin: 30px 20px;
+        }
+        .card li{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Choose Your Position</h1>
+        </div>
+        <div class="row section">
+            <div class="card">
+                <h1>Foward</h1>
+                <h2>10<span> / BackNumber</span></h2>
+                <ul>
+                    <li>Targeter</li>
+                    <li>Shooting</li>
+                    <li>Short-Pass</li>
+                    <li>Heading</li>
+                    <li>Cut-Back</li>
+                    <li>Fake Moving</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h1>Mid Fielder</h1>
+                <h2>8<span> / BackNumber</span></h2>
+                <ul>
+                    <li>Long-Pass</li>
+                    <li>Throuh-Pass</li>
+                    <li>Ball-Control</li>
+                    <li>Read Game</li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h1>Defender</h1>
+                <h2>2<span> / BackNumber</span></h2>
+                <ul>
+                    <li>Cuting</li>
+                    <li>Long-Pass</li>
+                    <li>Defence</li>
+                    <li>Heading</li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
