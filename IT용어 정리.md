@@ -150,3 +150,8 @@
 ### :black_nib: STATIX IP
 - 고정 IP
 - 만든 서비스를 제공해야할 때. (IP가 바뀌면 제공이 어렵기 때문에)
+
+### :black_nib: 운영체제
+- WINDOW
+- MAC OS
+- RENUX
