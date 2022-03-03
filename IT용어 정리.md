@@ -147,7 +147,7 @@
 - IP가 유동적으로 바뀜
 - 학교, 카페, 회사 등등
 
-### :black_nib: STATIX IP
+### :black_nib: STATIC IP
 - 고정 IP
 - 만든 서비스를 제공해야할 때. (IP가 바뀌면 제공이 어렵기 때문에)
 
