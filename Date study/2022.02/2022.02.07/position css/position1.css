@@ -1,0 +1,21 @@
+
+.a{
+    background-color: red;
+    width: 20%;
+    height: 100px;
+    position: relative;
+}
+.b {
+    background-color: yellow;
+    width: 20%;
+    height: 100px;
+    position: relative;
+    left: 20%;
+}
+.c {
+    background-color: green;
+    width: 20%;
+    height: 100px;
+    position: relative;
+    left: 40%;
+}
