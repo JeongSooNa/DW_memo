@@ -1,0 +1,66 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.row{
+    display: flex;
+}
+.row-col{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    background-color: #778;
+}
+.dashboard-graph{
+    padding: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-gap: 30px;
+}
+.dashboard-graph-circle{
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    padding: 6% 3%;
+    border-radius: 15px;
+}
+.dashboard-graph-circle h3{
+    font-size: 20px;
+    text-align: center;
+    margin: 5%;
+}
+.dashboard-graph-circle p{
+    text-align: left;
+    width: 60%;
+}
+.yellow{
+    border-top: 7px solid #f6c23e;
+    padding: 10%;
+    margin-top: 30px;
+}
+.skyblue{
+    border-top: 7px solid skyblue;
+    padding: 10%;
+    margin-top: 30px;
+}
+.pink{
+    border-top: 7px solid pink;
+    padding: 10%;
+    margin-top: 30px;
+}
+.green{
+    border-top: 7px solid green;
+    padding: 10%;
+    margin-top: 30px;
+}
+.border{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.border h1{
+    position: absolute;
+}

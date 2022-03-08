@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="plot.css">
+    <!-- Chart.js를 Down받게 됨. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <!-- dashboard-graph : 그래프관련 대시보드 -->
+        <div class="dashboard-graph">
+            <!-- dashboard-graph-circle : circle 그래프 -->
+            <div class="dashboard-graph-circle">
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <span>80%</span></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border yellow">
+                    <!-- 여기에 그래프를 넣을 예정 -->
+                    <!-- 
+                        canvas tag : html에 그림을 그릴 수 있는 일종의 컨테이너 테그 
+                        id : 중복 불가능(PK)
+                        class : 중복 가능
+                    -->
+                    <canvas id="myChart1"></canvas>
+                    <h1>80%</h1>
+                </div>
+            </div>
+            <div class="dashboard-graph-circle">
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <span>80%</span></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border skyblue">
+                    <!-- 여기에 그래프를 넣을 예정 -->
+                    <!-- 
+                        canvas tag : html에 그림을 그릴 수 있는 일종의 컨테이너 테그 
+                        id : 중복 불가능(PK)
+                        class : 중복 가능
+                    -->
+                    <canvas id="myChart2"></canvas>
+                    <h1>90%</h1>
+                </div>
+            </div>
+            <div class="dashboard-graph-circle">
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <span>80%</span></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border pink">
+                    <!-- 여기에 그래프를 넣을 예정 -->
+                    <!-- 
+                        canvas tag : html에 그림을 그릴 수 있는 일종의 컨테이너 테그 
+                        id : 중복 불가능(PK)
+                        class : 중복 가능
+                    -->
+                    <canvas id="myChart3"></canvas>
+                    <h1>65%</h1>
+                </div>
+            </div>
+            <div class="dashboard-graph-circle">
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <span>80%</span></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border green">
+                    <!-- 여기에 그래프를 넣을 예정 -->
+                    <!-- 
+                        canvas tag : html에 그림을 그릴 수 있는 일종의 컨테이너 테그 
+                        id : 중복 불가능(PK)
+                        class : 중복 가능
+                    -->
+                    <canvas id="myChart4"></canvas>
+                    <h1>98%</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- script 작성 -->
+    <script>
+        // graph에 data를 넣기 위해서는 코딩이 필요.
+        // 상수(const) 변수명은 대문자로.(약속)
+        const DATA_SETTINGS1 = {
+            // JSON : Key와 Value로 구성 **프론트에만 사용하는게 아님
+            // Key : 중복 불가능(고유한 값)
+            // Value : 중복 가능(값) (문자형, 정수형, 논리형, 배열 등)
+            datasets : [
+                {
+                label : "2022 매출 통계",
+                //그래프에 들어갈 data
+                data : [20,80],
+                backgroundColor : ["rgb(245,245,245)","rgb(255,205,86)"]
+            }
+        ]
+        };
+        const MY_CHART_DATA1 = {
+            type : "doughnut",
+            data : DATA_SETTINGS1
+        };
+        const DATA_SETTINGS2 = {
+            // JSON : Key와 Value로 구성 **프론트에만 사용하는게 아님
+            // Key : 중복 불가능(고유한 값)
+            // Value : 중복 가능(값) (문자형, 정수형, 논리형, 배열 등)
+            datasets : [
+                {
+                label : "2022 매출 통계",
+                //그래프에 들어갈 data
+                data : [10,90],
+                backgroundColor : ["rgb(245,245,245)","skyblue"]
+            }
+        ]
+        };
+        const MY_CHART_DATA2 = {
+            type : "doughnut",
+            data : DATA_SETTINGS2
+        };
+        const DATA_SETTINGS3 = {
+            // JSON : Key와 Value로 구성 **프론트에만 사용하는게 아님
+            // Key : 중복 불가능(고유한 값)
+            // Value : 중복 가능(값) (문자형, 정수형, 논리형, 배열 등)
+            datasets : [
+                {
+                label : "2022 매출 통계",
+                //그래프에 들어갈 data
+                data : [35,65],
+                backgroundColor : ["rgb(245,245,245)","pink"]
+            }
+        ]
+        };
+        const MY_CHART_DATA3 = {
+            type : "doughnut",
+            data : DATA_SETTINGS3
+        };
+        const DATA_SETTINGS4 = {
+            // JSON : Key와 Value로 구성 **프론트에만 사용하는게 아님
+            // Key : 중복 불가능(고유한 값)
+            // Value : 중복 가능(값) (문자형, 정수형, 논리형, 배열 등)
+            datasets : [
+                {
+                label : "2022 매출 통계",
+                //그래프에 들어갈 data
+                data : [2,98],
+                backgroundColor : ["rgb(245,245,245)","green"]
+            }
+        ]
+        };
+        const MY_CHART_DATA4 = {
+            type : "doughnut",
+            data : DATA_SETTINGS4
+        };
+        // 차트를 생성할 준비
+        // Programming에서 new keyword가 있으면 객체지향언어!
+        // where? 어디에 넣을 지 지정해야함.
+        // Chart.js를 위의script에서 받아 Cahrt class를 호출할 수 있다.
+        new Chart(document.getElementById("myChart1"), MY_CHART_DATA1);
+        new Chart(document.getElementById("myChart2"), MY_CHART_DATA2);
+        new Chart(document.getElementById("myChart3"), MY_CHART_DATA3);
+        new Chart(document.getElementById("myChart4"), MY_CHART_DATA4);
+        
+    </script>
+</body>
+</html>
