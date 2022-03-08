@@ -155,3 +155,8 @@
 - WINDOW
 - MAC OS
 - RENUX
+
+### :black_nib: CDN (Content Delivery Network)
+- 가장 가까운 Server(지사)에서 Content를 전송받는다.
+- 미국 등 본사 Server와 거리가 멀기 때문에.
+- 지리적 제약 없이 전 세계 사용자에게 빠르고 안전하게 콘텐츠를 전송할 수 있는 기술.
