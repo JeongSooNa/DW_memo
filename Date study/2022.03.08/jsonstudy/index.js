@@ -76,7 +76,7 @@ for(var i=0;i<len;i++){
 }
 const run = run_time.filter(
     (element, i) => element !== undefined
-  );
+  ); // 값이 null인 배열값 삭제
 console.log("상영시간이 140분 이상인 영화는 "+run+"입니다.")
 
 // 문제
@@ -99,7 +99,7 @@ var emp = {
 
 // 함수(function)이용해서 method처럼 parameter값 받아 return하기
 var x = [1,2,3,4,5]
-console.log("***function을 이용하여 배열 합,최댓값 구하기***")
+console.log("***function을 이용하여 return값 구하기***")
 function sum(x){
     var sum = 0
     for(var i=0;i<x.length;i++){
@@ -116,3 +116,11 @@ function max(x){
     return max
 }
 console.log("최댓값 : "+max(x))
+function jjak(x){
+    var jjak=[]
+    for(var i=0;i<x.length;i++){
+        if(x[i]%2==0) jjak.push(x[i])
+    }
+    return jjak
+}
+console.log(x+"중 짝수는 "+jjak(x)+"입니다.")
