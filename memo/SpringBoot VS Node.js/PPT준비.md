@@ -1,12 +1,54 @@
 # Spring Boot(Java) VS Node.js(Javascript)
 - Backend 개발에 있어서 공부해야 할 언어 선택
 
-1. 조사 이유
-2. 간략한 설명 및 장.단점
-3. 실제 사용해본 결과
-4. 백앤드 개발을 해당 언어로 할 경우 장.단점
-5. 회사, 기업이 원하는 언어, 자격조건, 우대사항
-6. 각자의 생각 정리
+### 1. 조사 이유
+### 2. 간략한 설명 및 장.단점
+### 3. 실제 사용해본 결과
+### 4. 백앤드 개발을 해당 언어로 할 경우 장.단점
+### 5. 회사, 기업이 원하는 언어, 자격조건, 우대사항
+
+#### 인크루트 Spring Search
+- (주)우리요
+> Spring Framework, Java기반 서버개발, DB설계경험   
+> Git, Linux 우대
+- (주)에이치오아이시티
+> Java / JSP   
+> 전자정부프레임워크(Spring 4.x)기반
+- (자)해양선박
+> Java / JSP / PHP 기반   
+> DBMS / WEB, WAS 기본지식
+#### 사람인 Spring 64건, Spring boot 21건
+- (주)데이터메이커
+> 웹크롤링, 객체지향언어 1개이상 사용 가능   
+> Django / Spring / Node.js 등   
+> Linux, Python
+- (주)엠아이티
+> Java(Spring Boot) / DB(mySQL)   
+> 신입, 성장위주의 허술한 회사
+- (주)모바일휠
+> Java(Spring Boot) 개발경험
+- (주)심스얼리티
+> Java(Spring Boot) 개발경험   
+> Linux 환경 개발 경험
+#### 워크넷
+- (주)에이치오아이시티
+> Java / JSP   
+> 전자정부프레임워크(Spring 4.x)기반
+- (자)해양선박
+> Java / JSP / PHP 기반   
+> DBMS / WEB, WAS 기본지식
+- (주)포어
+> 회사직원 6명   
+> HTML / CSS / Javascript   
+> Java / Python / C   
+> 풀스텍 개발자를 원하는 듯 하다 매우 허술
+#### 프로그래머스
+- (주)데이터메이커
+> 웹크롤링, 객체지향언어 1개이상 사용 가능   
+> Django / Spring / Node.js 등   
+> Linux, Python
+
+### 6. 각자의 생각 정리
 
 > 지유 : 지금까지 조사했을 때 스타트업의 경우 node를 많이 원함
 나는 앞으로 개발자로 꾸준히 일 하고싶고 더 발전하고 싶기 때문에
