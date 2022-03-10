@@ -123,4 +123,4 @@ function jjak(x){
     }
     return jjak
 }
-console.log(x+"중 짝수는 "+jjak(x)+"입니다.")
+console.log(x+"중 짝수는 "+jjak(x)+"입니다.") 
