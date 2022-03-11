@@ -5,8 +5,33 @@
 }
 .row{
     display: flex;
+    width: 1200px;
+    height: 200px;
+    margin: 30px auto;
+    border: 2px solid black;
 }
-.row-col{
+.item{
+    width: 30%;
     display: flex;
     flex-direction: column;
+}
+.tab{
+    flex-basis: 33.3%;
+    border: 2px solid black;
+    cursor: pointer;
+}
+.tab h2{
+    text-align: center;
+}
+.content{
+    flex-basis: 70%;
+    border: 2px solid red;
+    font-size: 42px;
+    text-align: center;
+}
+#b{
+    display: none;
+}
+#c{
+    display: none;
 }
