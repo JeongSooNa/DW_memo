@@ -27,3 +27,6 @@ https://blex.me/@baealex/%EC%B7%A8%EC%A4%80%EC%83%9D%EC%9D%B4-%EC%83%9D%EA%B0%81
 
 ## GitHub Badge 모음
 - https://github.com/Ileriayo/markdown-badges
+
+## 개발자 이력서
+- https://wonny.space/writing/work/engineer-resume
