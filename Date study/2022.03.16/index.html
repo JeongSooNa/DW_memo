@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 500px;
+            height: 200px;
+            margin: 50px auto;
+        }
+        .popup{
+            width: 1000px;
+            height: 300px;
+            background-color: #777;
+            margin: 100px auto;
+            position: relative;
+        }
+        .popup-close{
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .button{
+            padding: 3%;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="popup" class="popup">
+        <div class="popup-close" onclick="closePopup()"></div>
+    </div>
+    <div class="container">
+        <!-- content is in container box -->
+        <button onclick="openPopup()">확인</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        function closePopup(){
+            // Vanilla.js 문법
+            // document.getElementById("popup").style.display="none"
+            // Jquery 문법
+            // $("#popup").hide()
+            $("#popup").css("display","none")
+
+            // class이름이 container인 tag 안에 해당 tag를 추가해라.
+            $('.container').append('<button onclick="openPopup()">취소</button>')
+        }
+        function openPopup(){
+            // var style = document.getElementById("popup").style.display
+            // if(style == "none"){
+            //     document.getElementById("popup").style.display="block"
+            //     return true
+            // }
+            var style = $("#popup")
+            if(style.css("display") == "none"){
+                // style.show()
+                style.css("display","block")
+                return true
+            }
+        }
+    </script>
+</body>
+</html>
