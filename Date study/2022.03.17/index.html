@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            width: 1200px;
+            height: 400px;
+            margin: 50px auto;
+            display: flex;
+            background-color: black;
+            padding: 10px;
+            justify-content: space-around;
+        }
+        .item{
+            flex-basis: 10%;
+        }
+        .red{
+            background-color: red;        
+        }
+        .orange{
+            background-color: orange;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .green{
+            background-color: green;
+        }
+        .skyblue{
+            background-color: skyblue;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .purple{
+            background-color: purple;
+        }
+        button{
+            font-size: 20px;
+            padding: 3%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="createItem()">append</button>
+        <button id="children">children</button>
+        <div class="row">
+            <div class="item red" onclick="clickItem(this)">한가람식당</div>
+        </div>
+    </div>
+    <script 
+        src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        // on : event를 받을 준비 (바인딩)
+        // 익명 함수 : funtion() 함수이름 없이 사용
+        // Javascript는 매개변수로 함수가 가능하다. (Javascript 특징)
+        // Javascript는 return type이 없어 function도 return이 가능하다.
+        // children() : 자식 tag 정보 호출
+        $('#children').on('click',function(){ // event(click)가 발생하면 실행(function)
+            var len = $(".row").children().length
+            console.log(len)
+            console.log($('.row').children()) // row의 정보 출력
+            console.log($('.row').children()[0].innerText) // row정보 안의 innerText 출력
+        })
+
+        // add div
+        function createItem(){
+            // item 갯수가 7개 이상이면 stop
+            var len = $(".row").children().length
+            if(len >=7){
+                return alert("아이템 길이가 7을 넘었습니다.")   
+            }
+            // index별 다른 배경색의 item 생성
+            if(len%7==0){
+                $('.row').append('<div class="item red"></div>')
+            }
+            if(len%7==1){
+                $('.row').append('<div class="item orange"></div>')
+            }
+            if(len%7==2){
+                $('.row').append('<div class="item yellow"></div>')
+            }
+            if(len%7==3){
+                $('.row').append('<div class="item green"></div>')
+            }
+            if(len%7==4){
+                $('.row').append('<div class="item skyblue"></div>')
+            }
+            if(len%7==5){
+                $('.row').append('<div class="item blue"></div>')
+            }
+            if(len%7==6){
+                $('.row').append('<div class="item purple"></div>')
+            }
+        }
+        // this
+        function clickItem(value){
+            console.log(value)
+        }
+        
+        // 문제풀기
+        function test(){
+            
+        }
+    </script>
+</body>
+</html>
