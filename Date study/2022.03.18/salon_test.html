@@ -1,0 +1,112 @@
+<!-- 1. 예약시간을 선택해야 예약할 수 있다.
+ 시간선택없이 예약버튼 누르면
+ "시간을 선택하세요!"라는 알람 구현!
+
+2. 예약버튼을 누르면 선택된 
+예약시간은 없어져야 한다. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+        }
+        .row-col{
+            display: flex;
+            flex-direction: column;
+        }
+        .reservation{
+            width: 100%;
+            height: 300px;
+            margin: 100px auto;
+            background-color: #999;
+        }
+        .title{
+            text-align: center;
+        }
+        .reservation-salon{
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .choose-style{
+            width: 40%;
+            height: 100px;
+            background-color: white;
+        }
+        .choose-time{
+            width: 40%;
+            height: 100px;
+            background-color: white;
+        }
+        .button{
+            margin: 0px auto;
+            width: 300px;
+            height: 80px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .button button{
+            width: 120px;
+            height: 90%;
+            cursor: pointer;
+            color: white;
+        }
+        .button button:nth-child(1){
+            background-color: blue;
+        }
+        .button button:nth-child(2){
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="reservation">
+            <div class="title"><h1>한가람 미용실</h1></div>
+            <div class="row reservation-salon">
+                <div class="choose-style">
+                    <p>원하는 스타일을 선택하시오.</p>
+                    <label for="perm">펌</label>
+                    <input type="radio" name="info" id="perm" value="펌" />
+                    <label for="cut">커트</label>
+                    <input type="radio" name="info" id="cut" value="커트" checked />
+                    <label for="dyed">염색</label>
+                    <input type="radio" name="info" id="dyed" value="염색" />
+                </div>
+                <div class="choose-time">
+                    <select id="appointment">
+                        <option value="">-- 예약시간 선택 --</option>
+                        <option value="first">11:00 ~ 11:30</option>
+                        <option value="second">11:30 ~ 12:00</option>
+                        <option value="third">12:00 ~ 12:30</option>
+                        <option value="last">12:30 ~ 13:00</option>
+                      </select>
+                </div>
+            </div>
+            <div class="row button">
+                <button>예약</button>
+                <button>취소</button>
+            </div>
+        </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        function chooseTime(){
+            if()
+        }
+    </script>
+</body>
+</html>
