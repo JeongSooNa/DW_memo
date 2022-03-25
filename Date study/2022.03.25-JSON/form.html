@@ -64,13 +64,11 @@
         // 이메일을 확인하다.
         function doCheckEmail(email){
             // E-mail Check 정규표현식
-            // 참고 : https://plitche.github.io/language/javascript/2021-05-30-regularEx/
             var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
             var isEmail = regEmail.test(email); // test라는 내장function이 JavaScript에 존재.(Boolean type)
             return isEmail;
         }
         // 사업자 등록번호를 확인하다. 314-86-37230
-        // 참고 : https://ioerror.tistory.com/entry/%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-%EB%AA%A8%EC%9D%8C
         function doCheckCompanyNumber(companyNumber){
             var regCompanyNumber = /([0-9]{3})-?([0-9]{2})-?([0-9]{5})/;
             var isCompanyNumber = regCompanyNumber.test(companyNumber);
