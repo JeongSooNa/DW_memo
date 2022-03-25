@@ -30,3 +30,6 @@ https://blex.me/@baealex/%EC%B7%A8%EC%A4%80%EC%83%9D%EC%9D%B4-%EC%83%9D%EA%B0%81
 
 ## 개발자 이력서
 - https://wonny.space/writing/work/engineer-resume
+
+## 자주 사용하는 정규표현식 모음
+- https://ioerror.tistory.com/entry/%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-%EB%AA%A8%EC%9D%8C
