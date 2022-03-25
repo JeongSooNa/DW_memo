@@ -32,11 +32,11 @@ body {
 .nav ul li {
   cursor: pointer;
   border-radius: 10px 10px 0px 0px;
-  background-color: #c24040;
   padding: 3%;
   flex-basis: 25%;
   text-align: center;
   font-size: 30px;
+  background-color: #c24040;
   color: #fff;
 }
 
