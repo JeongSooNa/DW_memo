@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <div class="forms">
+        <input id="email" type="text" placeholder="이메일을 입력하세요..." />
+        <input id="companyNumber" type="text" placeholder="사업자 등록번호를 입력하세요..."/>
+        <input id="userName" type="text" placeholder="이름을 입력하세요..."/>
+        <!-- input이 20개 있다고 가정 -->
+    </div>
+    <button id="btn" type="button">사업 제출</button>
+    <!-- button tag의 type은 default가 submit이다. -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    >//JQuery</script>
+    <script>
+        // 버튼을 클릭했을 때 이벤트를 처리할 수 있는 방법
+        // 1. onclick  (되도록 쓰지 않는다. this를 parameter로 넘겨줄 때만 사용)
+        // 2. $().on('click',익명function)
+        // 3. $().click(익명function)
+
+        // $('#btn').on('click',function(){}) // ver 5
+        // $('#btn').click(() => {}) // ver 6 (arrow function)
+        $('#btn').click(function(){
+            // 문제1. for문 > console.log로 id를 출력
+            // input을 check하는 로직 구현.
+            var formsChildren = $('.forms').children()
+            for(var i=0;i<formsChildren.length;i++){
+                console.log(formsChildren[i].id)
+                var value = $('#'+formsChildren[i].id).val()
+                if(value === ''){
+                    console.log('input값을 입력해주세요!')
+                }
+            }
+        }) // ver 5
+
+
+        // JavaScript function 특징
+        // 1. return type 정의 x
+        // 2. 호출할 때 parameter값 optional
+        // 3. parameter에 data type 정의 x
+        // 4. parameter에 function을 허용
+        // 5. return값에 function이 가능(클로저)
+        // 이메일을 확인하다.
+        function doCheckEmail(email){
+
+        }
+
+        // 사업자 등록번호를 확인하다.
+        function doCheckCompanyNumber(companyNumber){
+
+        }
+
+    </script>
+</body>
+</html>

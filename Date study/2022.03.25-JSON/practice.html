@@ -15,6 +15,7 @@
 </head>
 <body>
     <div class="text-wrapper">
+        <input id="title" itype="text" value="골라골라 술" disabled/>
         <input id="참이슬" itype="text" value="참이슬  "/>
         <input id="대선" type="text" value="대선"/>
         <input id="여수밤바다" type="text" value="여수 밤 바다  "/>
@@ -35,11 +36,11 @@
         // 2. text-wrapper 이용(with for문)
 
         // 1. 요소(tag)에 id를 지정
-        var name = '참이슬'
+        var name = '여수밤바다'
         var result = $('#'+ name)
             .val() // jquery의 모든 함수는 return값이 있음.
             .trim() // 메소드 체이닝
-        console.log(result) // : 참이슬이 출력
+        console.log(result) // : '여수 밤 바다  '가 출력
 
         // 2. 부모와 자식을 이용.
         // text-wrapper의 자식 정보가 변수에 대입
