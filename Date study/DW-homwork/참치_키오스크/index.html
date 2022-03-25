@@ -12,10 +12,10 @@
       <div class="header">
         <div class="banner"></div>
         <div class="nav">
-          <ul>
-            <li>전체 메뉴</li>
-            <li>오늘의 메뉴</li>
-            <li>베스트 메뉴</li>
+          <ul class="nav-menu">
+            <li id="menu1">전체 메뉴</li>
+            <li id="menu2">오늘의 메뉴</li>
+            <li id="menu3">베스트 메뉴</li>
           </ul>
         </div>
       </div>
@@ -86,7 +86,53 @@
       // 클릭한 메뉴에 아래 css를 적용할 것
       // background-color: #ffffff;
       // color: #4e4e4e;
-      // $('.nav ul li').css('background-color','#ffffff')
+      // background-color: #c24040;
+      // color: #fff;
+      $(function(){
+        $('#menu1').on("click",function(){
+          $('#menu1').css("background-color","#ffffff")
+          $('#menu1').css("color","#4e4e4e")
+          $('#menu2').css("background-color","#c24040")
+          $('#menu2').css("color","#fff")
+          $('#menu3').css("background-color","#c24040")
+          $('#menu3').css("color","#fff")
+        })
+        $('#menu2').on("click",function(){
+          $('#menu1').css("background-color","#c24040")
+          $('#menu1').css("color","#fff")
+          $('#menu2').css("background-color","#ffffff")
+          $('#menu2').css("color","#4e4e4e")
+          $('#menu3').css("background-color","#c24040")
+          $('#menu3').css("color","#fff")
+        })
+        $('#menu3').on("click",function(){
+          $('#menu1').css("background-color","#c24040")
+          $('#menu1').css("color","#fff")
+          $('#menu2').css("background-color","#c24040")
+          $('#menu2').css("color","#fff")
+          $('#menu3').css("background-color","#ffffff")
+          $('#menu3').css("color","#4e4e4e")
+        })
+      })
+
+      // var div2 = $('#menu')
+      // function click(event) {
+      //   if (event.target.classList[1] === "nav ul li:hover") {
+      //     event.target.classList.remove("nav ul li:hover");
+      //   }
+      //   else {
+      //     for (var i = 0; i < div2.length; i++) {
+      //       div2[i].classList.remove("nav ul li:hover");
+      //     }
+      //     event.target.classList.add("nav ul li:hover");
+      //   }
+      // }
+      // function init() {
+      //   for (var i = 0; i < div2.length; i++) {
+      //     div2[i].addEventListener("click", handleClick);
+      //   }
+      // }
+      // init();
 
       // 2번 문제: 메뉴 담기를 클릭하면 총 주문 금액에 가격 표기할 것
       // 단, 참다랑어 세트는 품절이기 때문에 총 주문 금액에 포함될 수 없다.
