@@ -27,7 +27,7 @@
         <input id="input-4" type="text" placeholder="연락처를 입력해주세요...(번호만 입력하세요)"/>
         <div class="question-box">
           <span>회원가입에 동의하나요?</span>
-          <input type="checkbox" />
+          <input id="input-5" type="checkbox" />
         </div>
         <div class="join-btn">
           <button type="button">회원 가입</button>
@@ -40,6 +40,7 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      var jsonData = {};
       /* 문제 1. 
         회원가입 버튼 눌렀을 때, 빈칸 혹은 체크하지 못한 부분이 있다면
         '내용을 확인해주세요!'하는 alert을 보여주고 focus 하시오.*/
@@ -53,6 +54,11 @@
             return false;
           }
         }
+        if(!$('#input-'+i).is(':checked')){
+          alert('회원가입에 동의해주세요!')
+          return false;
+        }
+        
         /* 문제 2.
           연락처에 '-'를 작성하면 회원가입 버튼을 눌렀을 때 제거하시오.
           ex) 010-4097-0823 -> 01040970823*/
@@ -60,14 +66,52 @@
         phoneNumber = phoneNumber.replace(/-/gi,'');
         $('#input-4').val(phoneNumber)
 
-      })
-      /* 문제 3.
-        회원이름과 닉네임은 20글자 이하고 한글만 사용할 수 있습니다.*/
-      $('#input-4'). //여거야!!!!!!!!!!!!!!!
+        /* 문제3 한글유무 */
+        if(!doCheckHangeul($('#input-1').val())){
+          alert('회원이름은 한글만 입력할 수 있습니다.')
+          $('#input-1').focus()
+          return false;
+        }
+        if(!doCheckHangeul($('#input-2').val())){
+          alert('닉네임은 한글만 입력할 수 있습니다.')
+          $('#input-2').focus()
+          return false;
+        }
       /* 문제 4. 
         모든 조건을 만족하고 회원가입 버튼을 누르면
         input데이터를 json으로 만들어 console.log에 출력하시오.
       */
+      jsonData.name = $('#input-1').val();
+      jsonData.nickName = $('#input-2').val();
+      jsonData.email = $('#input-3').val()+'@'+$('#emailList option:selected').text();
+      jsonData.phone = $('#input-4').val();
+      doSubmit(jsonData);
+      })
+      /* 문제 3.
+        회원이름과 닉네임은 20글자 이하고 한글만 사용할 수 있습니다.*/
+      $('#input-1').on('keyup',function(){
+        if($(this).val().length>20){
+          $(this).val($(this).val().substring(0,20))
+          alert('회원이름은 20자를 초과할 수 없습니다.')
+          return false;
+        }
+      })
+      $('#input-2').on('keyup',function(){
+        if($(this).val().length>20){
+          $(this).val($(this).val().substring(0,20))
+          alert('회원이름은 20자를 초과할 수 없습니다.')
+          return false;
+        }
+      })
+      function doCheckHangeul(text){
+        // 한글 Check 정규표현식
+        var regHangeul = /^[가-힣]+$/;
+        var isHangeul = regHangeul.test(text); // test라는 내장function이 JavaScript에 존재.(Boolean type)
+        return isHangeul;
+      }
+      function doSubmit(jsonData){
+        console.log(jsonData)
+      }
     </script>
   </body>
 </html>

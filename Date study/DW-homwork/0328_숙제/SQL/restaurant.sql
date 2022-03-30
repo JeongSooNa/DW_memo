@@ -19,6 +19,22 @@ SELECT * FROM restaurant WHERE foodNo = 30 AND restaurantName= '빠스타스';
 가장 먼저해야하는 바람직한 행동은?
 답안 작성 =>
 */
+/* select절에서 실행되기 전 where절에서 서브쿼리를 통해 data를 걸러내 실행시간을 줄인다. */
+SELECT *
+FROM restaurant
+WHERE 
+    foodNo in(
+    SELECT foodNo
+    FROM restaurant
+    WHERE foodNo = 30
+    ) 
+    AND
+    restaurantName in(
+    SELECT restaurantName
+    FROM restaurant
+    WHERE restaurantName='빠스타스'
+    )
+;
 
 DELETE FROM food
 WHERE foodNo = 30;
@@ -36,3 +52,5 @@ CREATE TABLE restaurant(
     FOREIGN KEY(foodNo) REFERENCES food(foodNo) on delete cascade
     /* 해당 row는 살리고 30번column만 지우려면 set null*/
 );
+/* 또는 새로운 Column(데이터 존재 여부(true/false))을 만들어 관리한다. */
+/* ex) isInData : true / false */
