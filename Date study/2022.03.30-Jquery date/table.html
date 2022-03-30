@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid black;
+        }
+        th, td{
+            text-align: center;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>영수증 번호</th>
+                <th>구매 물품</th>
+                <th>수량</th>
+                <th>구매 날짜</th>
+                <th>구매자</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <!-- <tr>
+                <td>123</td>
+                <td>I-Phone13</td>
+                <td>10</td>
+                <td>2022-03-30</td>
+                <td>홍길동</td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        $(function(){
+            doResponseData(); //페이지 첫 로딩 시 해당 function 강제호출
+        })
+        // server에 있는 data를 가져와 그려줄 때
+        // 랜더(render) : 그려주다. 랜더링하다.
+        // Rendering하는 방법
+        // 1. append(), html(), text() function을 이용
+        //  - 진입장벽이 낮다.
+        //  - 유지보수가 힘들다.
+        // 2. Spring 시간에 다루기.
+        function doResponseData(){
+            // json data를 이용하기
+            var json = { // 서버에서 응답온 Data라고 가정.
+                no : [1,2,3,4,5],
+                goods : ['I-Phone13','Galaxy10','Galaxy-Note','Hello','World'],
+                cnt : [10,20,10,15,5],
+                createAt : ['2022-03-30','0000-01-01','2002-02-22','2012-03-20','1994-10-06'],
+                name : ['홍길동','임꺽정','이순신','이산','나정수']
+            };
+            // var html = '<tr><td>1000</td><td>I-Phone13</td><td>10</td><td>2022-03-30</td><td>홍길동</td></tr>';
+            for(var i=0;i<5;i++){
+                var html = 
+                '<tr><td>'+json.no[i]
+                +'</td><td>'+json.goods[i]
+                +'</td><td>'+json.cnt[i]
+                +'</td><td>'+json.createAt[i]
+                +'</td><td>'+json.name[i]
+                +'</td></tr>';
+                $('#list').append(html);
+            }
+        }
+
+    </script>
+</body>
+</html>

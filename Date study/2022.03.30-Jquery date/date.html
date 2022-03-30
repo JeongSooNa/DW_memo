@@ -42,7 +42,7 @@
             var today = new Date();
             console.log(today)
             console.log(today.getTime());
-            var reservationDate = new Date(selectedDate);
+            var reservationDate = new Date(selectedDate); // 문자 > Date type 변경
             console.log(reservationDate);
             console.log(reservationDate.getTime());
             var diffDay = (today.getTime()-reservationDate.getTime()) / (1000*60*60*24);
@@ -67,6 +67,7 @@
                 alert('오늘 이후 날짜를 선택해야 합니다.');
                 return false;
             }
+            
         })
     </script>
 </body>
