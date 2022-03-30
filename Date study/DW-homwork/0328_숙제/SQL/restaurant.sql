@@ -26,5 +26,13 @@ WHERE foodNo = 30;
 음식 테이블에 30번 음식 데이터를 지우려고 한다.
 하지만 레스토랑 테이블에 30번 데이터가 있어서 지울 수가 없다. 
 음식 테이블에 30번 데이터를 지울 방법은 무엇일까?
-답안 작성 =>
+답안 작성 => 
 */
+/* 위의 쿼리에서 on delete cascade를 추가하여 자식 데이터를 수정할 수 있도록 작성한다. */
+CREATE TABLE restaurant(
+    restaurantNo INTEGER(4) AUTO_INCREMENT PRIMARY KEY COMMENT '레스토랑 번호',
+    restaurantName VARCHAR(20) NOT NULL COMMENT '레스토랑 이름',
+    foodNo INTEGER(4) NOT NULL COMMENT '음식 번호',
+    FOREIGN KEY(foodNo) REFERENCES food(foodNo) on delete cascade
+    /* 해당 row는 살리고 30번column만 지우려면 set null*/
+);
