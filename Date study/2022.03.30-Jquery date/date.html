@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="forms">
+        <input id="reservationDate" type="date">
+        <select id="menu">
+            <option value="null">메뉴선택</option>
+            <option value="don">돈까스</option>
+            <option value="kal">칼국수</option>
+            <option value="gno">뇨끼</option>
+            <option value="kim">김치볶음밥</option>
+        </select>
+        <button id="btn" type="button">음식주문</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        $('#btn').click(function(){
+            // 메뉴 안골랐을 시 알림창 띄우기
+            var selectedMenu = $('#menu option:selected').val();
+            if(selectedMenu === 'null'){
+                alert('메뉴를 선택하시오.');
+                return false;
+            }
+            // 선택한 날짜
+            var selectedDate = $('#reservationDate').val();
+            console.log(selectedDate);
+            // 오늘 날짜(시,분,초 포함)
+            var today = new Date();
+            console.log(today)
+            console.log(today.getTime());
+            var reservationDate = new Date(selectedDate);
+            console.log(reservationDate);
+            console.log(reservationDate.getTime());
+            var diffDay = (today.getTime()-reservationDate.getTime()) / (1000*60*60*24);
+            console.log(diffDay);
+            // diffDay가 양수면 이전 날짜, 음수면 이후 날짜가 나온다.
+            // (오늘 날짜는 0.1이 나오기 때문에 diffDay>1로 계산한다.)
+            // if(diffDay>=1){
+            //     alert('오늘 날짜 이후로 예약이 가능합니다.')
+            //     return false;
+            // }
+            // 근데 아래 년도, 월, 일 만 따로 뽑아서 계산하는게 더 쉬운 것 같다.
+            
+            // 간단한 함수로 구하기
+            // 오늘 날짜(시,분,초 제외)
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var dateString = year + '-' + month  + '-' + day;
+            console.log(dateString);
+            // 이후 날짜로 예약할 수 있도록 알림창 띄우기
+            if(selectedDate <= dateString){
+                alert('오늘 이후 날짜를 선택해야 합니다.');
+                return false;
+            }
+        })
+    </script>
+</body>
+</html>
