@@ -3,5 +3,16 @@
 let array = [1, 10, 4, 3, 5];
 let count = 0; //총 몇회전 했는지 알아내는 변수
 
+// Bubble sort funtion
+function bubble(array){
+    var len = array.length;
+    for(var i=0;i<len;i++){
+        for(var j=0;j<len;j++){
+            
+        }
+    }
+    return array;
+}
+
 console.log(array);
 console.log(count);

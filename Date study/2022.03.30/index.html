@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="forms">
+            <div class="input-box">
+                <input id="email" type="text">
+            </div>
+            <div class="input-box">
+                <input id="name" type="text">
+            </div>
+            <div class="input-box">
+                <input id="phone" type="text">
+            </div>
+            <div class="input-box">
+                <input id="addr" type="text">
+            </div>
+            <div class="input-box">
+                <input id="age" type="text">
+            </div>
+        </div>
+        <button class="join" type="button">빈칸이 있습니까</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        var count = 0;
+        $('.join').click(function(){
+            // 입력 3번 틀리면 못누르게하기
+            if(count>=3){
+                alert('3번 이상 잘못 입력했습니다. 다시 시도해주세요.');
+                return false;
+            }
+            var formsChildren = $('.forms').children();
+            console.log(formsChildren)
+            var inputBoxChildren = $('.input-box').children();
+            console.log(inputBoxChildren)
+            // 빈칸 Check
+            var len = inputBoxChildren.length;
+            var jsonData = {};
+            for(var i=0; i<len; i++){
+                var elementId = inputBoxChildren[i].id;
+                var elementValue = $('#'+elementId).val().trim();
+                if(elementValue===''){
+                    alert('빈칸을 입력하시오.')
+                    $('#'+elementId).focus();
+                    count++;
+                    return false;
+                }
+                // email 정규표현식
+                // function(elementValue) 사용해도 가능
+                var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+                if(elementId=='email'&&!regEmail.test(elementValue)){
+                    alert('이메일 형식이 올바르지 않습니다.');
+                    count++;
+                    return false;
+                }
+                // json data 만들기
+                jsonData[elementId]=elementValue;
+            }
+            doSubmit(jsonData);
+        })
+        // email 정규표현식 Check Function
+        function doCheckEmail(email){
+            // E-mail Check 정규표현식
+            var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+            var isEmail = regEmail.test(email); // test라는 내장function이 JavaScript에 존재.(Boolean type)
+            return isEmail;
+        }
+        function doSubmit(jsonData){
+            console.log(jsonData)
+        }
+    </script>
+</body>
+</html>
