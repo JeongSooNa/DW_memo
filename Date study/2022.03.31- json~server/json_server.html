@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+        }
+        h1{
+            text-align: center;
+        }
+        .my-github{
+            margin: 40px;
+            display: flex;
+            justify-content: space-around;
+        }
+        table{
+            margin: 30px auto;
+            width: 90%;
+            text-align: center;
+            border: 1px solid;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Github</h1>
+        <div class="my-github">
+            <h3 class="name">Name : </h3>
+            <p class="followers">Followers : </p>
+            <p class="following">Following : </p>
+        </div>
+        <div class="reposi-table">
+            <h1>Repository</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>visibility</th>
+                        <th>created_at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>0</td>
+                        <td>275516967</td>
+                        <td>33-js-concepts</td>
+                        <td>public</td>
+                        <td>2020-06-28T05:52:34Z</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        // data server에 전송하기
+        // 동기 전송 / 비동기 전송
+        // ajax default value : 비동기 전송
+        // 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
+        $.ajax({
+            url : 'https://api.github.com/users/JeongSooNa',
+            type : 'GET', // select : Data 조회
+            dataType : 'json', // API Server에서 오는 DataType 정의
+            headers : {Authorization: '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'},
+            success : function(data){
+                // 서버 요청에 성공하면
+                console.log('Followers : '+data.followers);
+                console.log('Following : '+data.following);
+                // server에서 data를 받아와 HTML에 표시하기
+                $('.followers').append(data.followers);
+                $('.following').append(data.following);
+                $('.name').append(data.name);
+            },
+            error : function(request, status, error){
+                // 서버 요청에 실패하면
+                console.log(error);
+                // error massage 404 : 없는 주소
+                // error massage 500 : 서버 내부 결함(error)
+                // error massage 403 : 권한이 없음
+                console.log('Error : '+request);
+                if(request.status==404){
+                    alert('없는 주소 입니다.')
+                }
+            }
+        }); // ajax 선언
+
+        $.ajax({
+            url : 'https://api.github.com/users/JeongSooNa/repos',
+            type : 'GET',
+            dataType : 'json',
+            headers : {Authorization: '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'},
+            success : function(data){
+                console.log(data)
+                for(var i=0;i<data.length;i++){
+                    $('.table tbody').append(
+                        '<tr><td>'+(i+1)+
+                        '</td><td>'+data[i].id+
+                        '</td><td>'+data[i].name+
+                        '</td><td>'+data[i].visibility+
+                        '</td><td>'+data[i].created_at+
+                        '</td></tr>'
+                    )
+                }
+            },
+            error : function(request, status, error){
+                console.log(error)
+            }
+        })
+    </script>
+</body>
+</html>
