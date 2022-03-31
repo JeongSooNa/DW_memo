@@ -74,7 +74,7 @@
         if(movies[i].attendance>15000000){
             console.log('영화이름 : '+movies[i].name)
             console.log('개봉날짜 : '+movies[i].createdAt)
-            console.log('판매액 : '+movies[i].attendance)
+            console.log('판매액 : '+movies[i].salesRevenue+'원')
         }
     }
     console.log('')
@@ -109,16 +109,15 @@
     }
     
     //방법 2. today와의 차이로 계산
-    var today = new Date();
-    var todayTime = today.getTime()
-    var diff = 1000000000000000000000000000;
+    // 현재 시간과의 차이로 구할 필요없이 ms로 변환된 값이 가장 큰 index구하기.
+    // var today = new Date();
+    // var todayTime = today.getTime()
+    var maxDate = 0;
     var lastMovieIndex = null;
     for(var i=0;i<movies.length;i++){
         var time = new Date(movies[i].createdAt)
         var createdAtTime = time.getTime();
-        var dif = todayTime - createdAtTime
-        if(diff>dif){
-            diff = dif;
+        if(maxDate<createdAtTime){
             lastMovieIndex = i;
         }
     }
