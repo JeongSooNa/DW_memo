@@ -76,7 +76,11 @@
         // 1. half marathon에 참여한 참가자는 총 몇 명인지 구하고 출력하시오.
         console.log('* 1. half marathon에 참여한 참가자는 총 몇 명인지 구하고 출력하시오.')
         var len = marathonList.length;
-        console.log('총 참가인원 : '+len+'명')
+        var countMamber = 0;
+        $.each (marathonList, function (index, el) {
+          if(el.type = 'half marathon') countMamber++;
+        });
+        console.log('총 참가인원 : '+countMamber+'명')
         console.log('')
         // 2. 완주하지 못한 참가자의 이름과 등번호를 출력하시오.
         console.log('* 2. 완주하지 못한 참가자의 이름과 등번호를 출력하시오.')
@@ -106,13 +110,18 @@
         }
         var start = new Date('2022-04-01 13:00:00')
         var startTime = start.getTime();
-        var max = 1000000000000000
+        var max = 0;
+        var cnt = 0;
         var maxIndex = 0;
         for(var i=0;i<len;i++){
-          recordsTime[i] = records[i].getTime() - startTime
-          if(max>recordsTime[i]){
-            max = recordsTime[i];
-            maxIndex = i;
+          if(marathonList[i].records !=='null'){
+            recordsTime[i] = startTime - records[i].getTime()
+            if(cnt==1) max = recordsTime[i]
+            if(max<recordsTime[i]){
+              max = recordsTime[i];
+              maxIndex = i;
+            }
+            cnt++; // 기록이 있는 사람의 값을 max 초깃값으로 주기 위해cnt
           }
         }
         console.log('이름 : '+marathonList[maxIndex].participant)
@@ -124,15 +133,14 @@
         var recordsTimeMin = [];
         var sum = 0;
         var count = 0;
-        var average = 0;
         for(var i=0;i<len;i++){
           recordsTimeMin[i] = recordsTime[i] / (1000*60)
           if(recordsTimeMin[i]){
-            sum += recordsTimeMin[i]
+            sum -= recordsTimeMin[i]
             count++;
           }
         }
-        average = sum / count;
+        var average = sum / count;
         console.log('평균 기록 : '+average.toFixed(2)+'분')
 
         // 5번 map 을 이용해 풀기
@@ -147,30 +155,26 @@
         }
         console.log('평균 기록 : '+(sum/endRecords.length/(1000*60)).toFixed(2)+'분')
 
+        console.log('')
+        console.log('')
+        // for / foreack / eack
         var arr= [ 
-			    {name : '알리송', backnumber : '1'},
-          {name : '반다이크', backnumber : '4'} 
+			    {name : '반데사르', backnumber : '1'},
+          {name : '반다이크', backnumber : '4'},
+          {name : '반니스텔로이', backnumber : '7'},
+          {name : '반페르시', backnumber : '7'}
         ];
         //for문
         for (var i = 0; i <arr.length; i++) {
-          console.log('element', i, arr[i]);
-          console.log(arr[i].name);
-          console.log(arr[i].backnumber);
-          console.log(arr[i].name + arr[i].backnumber);
+          console.log(arr[i].name,arr[i].backnumber);
         };
         // foreach문
         arr.forEach (function (el, index) {
-          console.log('element', index, el);
-          console.log(el.name);
-          console.log(el.backnumber);
-          console.log(el.name + el.backnumber);
+          console.log(el.name,el.backnumber);
         });
         // $.each문
         $.each (arr, function (index, el) {
-          console.log('element', index, el);
-          console.log(el.name);
-          console.log(el.backnumber);
-          console.log(el.name + el.backnumber);
+          console.log(el.name,el.backnumber);
         });
 
     </script>
