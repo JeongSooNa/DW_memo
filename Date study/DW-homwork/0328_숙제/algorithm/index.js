@@ -6,7 +6,7 @@ let count = 0; //총 몇회전 했는지 알아내는 변수
 // Bubble sort funtion
 function bubble(array){
     var len = array.length;
-    for(var i=0;i<len;i++){
+    for(var i=0;i<len-1;i++){
         for(var j=0;j<len-i-1;j++){
             var tmp=0;
             if(array[j]>array[j+1]){
