@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=marathon, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // 제1회 DW 마라톤 참가자 리스트
+      /*
+        no : 마라톤 등번호
+        participant : 참가자
+        isComplete : 마라톤 완주 여부 (true : 완주, false: 미완주)
+        type : 마라톤 코스
+        records : 완주 기록
+       */
+      const marathonList = [
+        {
+          no: 300,
+          participant: '현상원',
+          isComplete: false,
+          type: 'half marathon',
+          records: 'null',
+        },
+        {
+          no: 400,
+          participant: '류근환',
+          isComplete: true,
+          type: 'half marathon',
+          records: '2022-04-01 13:35:00',
+        },
+        {
+          no: 410,
+          participant: '강인석',
+          isComplete: true,
+          type: 'half marathon',
+          records: '2022-04-01 13:37:20',
+        },
+        {
+          no: 500,
+          participant: '유영준',
+          isComplete: true,
+          type: 'half marathon',
+          records: '2022-04-01 13:40:15',
+        },
+        {
+          no: 201,
+          participant: '이승섭',
+          isComplete: true,
+          type: 'half marathon',
+          records: '2022-04-01 13:31:45',
+        },
+        {
+          no: 555,
+          participant: '홍준호',
+          isComplete: false,
+          type: 'half marathon',
+          records: 'null',
+        },
+        {
+          no: 777,
+          participant: '이정배',
+          isComplete: true,
+          type: 'half marathon',
+          records: 'null',
+        },
+      ];
+
+        // 1. half marathon에 참여한 참가자는 총 몇 명인지 구하고 출력하시오.
+        console.log('* 1. half marathon에 참여한 참가자는 총 몇 명인지 구하고 출력하시오.')
+        var len = marathonList.length;
+        console.log('총 참가인원 : '+len+'명')
+        console.log('')
+        // 2. 완주하지 못한 참가자의 이름과 등번호를 출력하시오.
+        console.log('* 2. 완주하지 못한 참가자의 이름과 등번호를 출력하시오.')
+        for(var i=0;i<len;i++){
+          if(!marathonList[i].isComplete){
+            console.log('이름 : '+marathonList[i].participant);
+            console.log('등번호 : '+marathonList[i].no);
+          }
+        }
+        console.log('')
+        // 3. 완주는 했는데 기록이 없는 참가자의 이름과 등번호를 출력하시오.
+        console.log('* 3. 완주는 했는데 기록이 없는 참가자의 이름과 등번호를 출력하시오.')
+        for(var i=0;i<len;i++){
+          if(marathonList[i].isComplete && marathonList[i].records=='null'){
+            console.log('이름 : '+marathonList[i].participant);
+            console.log('등번호 : '+marathonList[i].no);
+          }
+        }
+        console.log('')
+        // 4. 완주한 사람 중 가장 기록이 좋은 참가자의 이름과 등번호를 출력하시오.
+        // (마라톤 시작 시간은 '2022-04-01 13:00:00' 입니다.)
+        console.log('* 4. 완주한 사람 중 가장 기록이 좋은 참가자의 이름과 등번호를 출력하시오.')
+        var records = [];
+        var recordsTime = [];
+        for(var i=0;i<len;i++){
+          records[i] = new Date(marathonList[i].records)
+        }
+        var start = new Date('2022-04-01 13:00:00')
+        var startTime = start.getTime();
+        var max = 1000000000000000
+        var maxIndex = 0;
+        for(var i=0;i<len;i++){
+          recordsTime[i] = records[i].getTime() - startTime
+          if(max>recordsTime[i]){
+            max = recordsTime[i];
+            maxIndex = i;
+          }
+        }
+        console.log('이름 : '+marathonList[maxIndex].participant)
+        console.log('등번호 : '+marathonList[maxIndex].no)
+        console.log('')
+        // 5. 완주한 사람들의 평균 기록을 구하고 출력하시오. (몇 분)
+        // (단, 기록이 null인 사람은 제외)
+        console.log('* 5. 완주한 사람들의 평균 기록을 구하고 출력하시오. (몇 분)')
+        var recordsTimeMin = [];
+        var sum = 0;
+        var count = 0;
+        var average = 0;
+        for(var i=0;i<len;i++){
+          recordsTimeMin[i] = recordsTime[i] / (1000*60)
+          if(recordsTimeMin[i]){
+            sum += recordsTimeMin[i]
+            count++;
+          }
+        }
+        average = sum / count;
+        console.log('평균 기록 : '+average.toFixed(2)+'분')
+
+        // 5번 map 을 이용해 풀기
+        console.log('[map을 이용하여 배열 생성 후 계산]')
+        var endRecords= $.map(records, function( n ) {
+          return n > 0 ? n : null ;
+        });
+        var sum;
+        for(var i=0;i<endRecords.length;i++){
+          var endRecordsTime = endRecords[i].getTime() - startTime;
+          sum += endRecordsTime;
+        }
+        console.log('평균 기록 : '+(sum/endRecords.length/(1000*60)).toFixed(2)+'분')
+
+        var arr= [ 
+			    {name : '알리송', backnumber : '1'},
+          {name : '반다이크', backnumber : '4'} 
+        ];
+        //for문
+        for (var i = 0; i <arr.length; i++) {
+          console.log('element', i, arr[i]);
+          console.log(arr[i].name);
+          console.log(arr[i].backnumber);
+          console.log(arr[i].name + arr[i].backnumber);
+        };
+        // foreach문
+        arr.forEach (function (el, index) {
+          console.log('element', index, el);
+          console.log(el.name);
+          console.log(el.backnumber);
+          console.log(el.name + el.backnumber);
+        });
+        // $.each문
+        $.each (arr, function (index, el) {
+          console.log('element', index, el);
+          console.log(el.name);
+          console.log(el.backnumber);
+          console.log(el.name + el.backnumber);
+        });
+
+    </script>
+  </body>
+</html>
