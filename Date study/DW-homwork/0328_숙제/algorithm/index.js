@@ -19,7 +19,30 @@ function bubble(array){
     }
     return array;
 }
-array = bubble(array);
-
-console.log(array);
+var array1 = bubble(array);
+console.log(array1);
 console.log(count);
+
+
+function bubbleResult(array){
+    let len = array.length;
+    let isSwap = null;
+    for(let i=len; i>0;i--){
+        isSwap = false;
+        for(let j=0;j<(i-1);j++){
+            let tmp=0;
+            if(array[j]>array[j+1]){
+                tmp = array[j];
+                array[j]=array[j+1];
+                array[j+1]=tmp;
+                count++;
+                isSwap = true;
+            }    
+        }
+        if(!isSwap) break; // for문 닫기
+    }
+    return array;
+}
+var array2 = bubble(array);
+console.log(array2);
+console.log(count);0
