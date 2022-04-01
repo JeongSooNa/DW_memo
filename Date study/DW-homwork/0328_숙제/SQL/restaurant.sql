@@ -20,21 +20,23 @@ SELECT * FROM restaurant WHERE foodNo = 30 AND restaurantName= '빠스타스';
 답안 작성 =>
 */
 /* select절에서 실행되기 전 where절에서 서브쿼리를 통해 data를 걸러내 실행시간을 줄인다. */
-SELECT *
-FROM restaurant
-WHERE 
-    foodNo in(
-    SELECT foodNo
-    FROM restaurant
-    WHERE foodNo = 30
-    ) 
-    AND
-    restaurantName in(
-    SELECT restaurantName
-    FROM restaurant
-    WHERE restaurantName='빠스타스'
-    )
-;
+/* 참조키(FK)는 index를 추가해주어야한다. 그렇지 않으면 실행시간이 길어진다. */
+-- SELECT *
+-- FROM restaurant
+-- WHERE 
+--     foodNo in(
+--     SELECT foodNo
+--     FROM restaurant
+--     WHERE foodNo = 30
+--     ) 
+--     AND
+--     restaurantName in(
+--     SELECT restaurantName
+--     FROM restaurant
+--     WHERE restaurantName='빠스타스'
+--     )
+-- ; 이건 실행 시간이 줄어들까?
+/* 정답 : foodNo에 index를 주어야 한다.*/
 
 DELETE FROM food
 WHERE foodNo = 30;
