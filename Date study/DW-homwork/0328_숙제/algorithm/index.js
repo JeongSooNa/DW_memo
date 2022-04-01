@@ -43,6 +43,6 @@ function bubbleResult(array){
     }
     return array;
 }
-var array2 = bubble(array);
+var array2 = bubbleResult(array);
 console.log(array2);
-console.log(count);0
+console.log(count);
