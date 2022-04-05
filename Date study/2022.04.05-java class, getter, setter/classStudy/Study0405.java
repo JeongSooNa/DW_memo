@@ -1,4 +1,4 @@
-package 상속;
+package classStudy;
 
 class Pizza{
     int money; // 전역변수(필드변수) 생성

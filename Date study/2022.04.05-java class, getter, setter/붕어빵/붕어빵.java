@@ -1,4 +1,4 @@
-package 상속;
+package classStudy;
 
 public class 붕어빵 {
 	String 붕어빵종류;

@@ -1,4 +1,4 @@
-package 상속;
+package classStudy;
 
 public class 붕어빵장사 {
 	public static void main(String[] args) {

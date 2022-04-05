@@ -1,4 +1,4 @@
-package 상속;
+package classStudy;
 
 public class Dw {
 	// 항상 class name 앞은 대문자.
