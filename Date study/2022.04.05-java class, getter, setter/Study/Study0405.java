@@ -1,3 +1,5 @@
+package 상속;
+
 class Pizza{
     int money; // 전역변수(필드변수) 생성
     // 필드변수(전역변수)는 자동으로 값이 초기화되어있다.(java특징)
