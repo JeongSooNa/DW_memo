@@ -12,26 +12,30 @@ package 상속;
 class Apple{
 	int count;
 	
-	public int buyApple(int buyCount) {
+	public void buyApple(int buyCount) {
+		if(buyCount<0) {
+			System.out.println("외상 멈춰");
+			return;
+		}
 		this.count += buyCount;
 		System.out.println("구매한 사과는 "+buyCount+"개 이고 총 사과 수량은 "+this.count+"개 입니다.");
-		return this.count;
 	}
-	public int eatApple(int eatCount) {
+	public void eatApple(int eatCount) {
 		if(this.count == 0) {
 			System.out.println("사과가 없습니다. 못먹지롱 :) ");
-			return 0;
+			return;
 		}
 		this.count -= eatCount;
 		System.out.println("먹은 사과는 "+eatCount+"개 이고 남은 사과 수량은 "+this.count+"개 입니다.");
-		return this.count;
 	}
+	
 }
 
 public class Person {
 	public static void main(String[] args) {
 		Apple apple = new Apple();
 		apple.eatApple(10);
+		apple.buyApple(-10);
 		apple.buyApple(10);
 		apple.buyApple(10);
 		apple.eatApple(10);
