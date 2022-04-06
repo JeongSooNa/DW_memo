@@ -73,6 +73,10 @@ public class Bank {
 
 		bank.outMoney(500000);
 		System.out.println("잔고 금액 : " + bank.money + "원");
-
+		
+		
+		// 총 입금금액, 출금금액도 누적하여 더하려면
+		// BankLog class에 입금, 출금 전역변수도 만들어 기록 및 출력한다.
+		
 	}
 }
