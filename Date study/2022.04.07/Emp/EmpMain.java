@@ -49,12 +49,13 @@ public class EmpMain {
 		// 4.
 		System.out.println("	**입사년도가 1981년도인 사원의 번호, 이름 조회**");
 		for(EmpVO vo : list) {
+			// String hiredate = vo.hiredate.split("-")[0];
+			// split을 통해 새로운 배열을 만들어 날짜를 년/월/일 별로 저장해 풀이도 가능.
 			if(vo.hiredate.substring(0,4).equals("1981")) {
 				System.out.print("사원이름 : "+vo.ename+" / ");
 				System.out.println("직업 : "+vo.job);
 			}
 		}
-		// split을 통해 새로운 배열을 만들어 날짜를 년/월/일 별로 저장해 풀이도 가능.
 		
 		// 5.
 		System.out.println("	**직업이 MANAGER인 사원 수 조회**");
@@ -93,6 +94,7 @@ public class EmpMain {
 		System.out.println("	**입사월이 02월인 사원 수 조회**");
 		int count02 = 0;
 		for(EmpVO vo : list) {
+			// String hiredate = vo.hiredate.split("-")[1];
 			if(vo.hiredate.substring(5,7).equals("02")) count02++;
 		}
 		System.out.println("2월입사 : "+count02+"명");
