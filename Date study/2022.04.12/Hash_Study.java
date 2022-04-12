@@ -36,7 +36,10 @@ public class Hash_Study {
 		// 문제1. 한라산 출력하기
 		System.out.println(map.get("a"));
 		
-		
+	
+		HashMap<String, List> map3 = new HashMap<String, List>();
+		map3.put("1",list2); // HashMap input data
+		// HashMap을 통해 배열, List를 다루는 문제는 더 생각해 보자!
 	}
 }
 
