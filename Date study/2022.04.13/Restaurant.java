@@ -1,28 +1,37 @@
-package ìƒì†2;
+package »ó¼Ó2;
 
 class Manager{
-	public int ê¸‰ì—¬ë¥¼ì£¼ë‹¤(int ì›”ê¸‰){
-		return ì›”ê¸‰;
+	public Manager() {
+		System.out.println("hello world!");
 	}
-	public String ìš”ë¦¬ë¥¼í•˜ë‹¤(String ì‹ìì¬){
-		return ì‹ìì¬;
+	
+	public int ±Ş¿©¸¦ÁÖ´Ù(int ¿ù±Ş){
+		return ¿ù±Ş;
+	}
+	public String ¿ä¸®¸¦ÇÏ´Ù(String ½ÄÀÚÀç){
+		return ½ÄÀÚÀç;
 	}
 }
 class Chef extends Manager{
-	@Override // ì•ˆì¨ë„ Defaultë¡œ ì ìš©ë˜ë‚˜ ì ì–´ì£¼ì!
-	public int ê¸‰ì—¬ë¥¼ì£¼ë‹¤(int ì›”ê¸‰){
-		return ì›”ê¸‰*3;
+	public Chef() {
+		// super´Â ºÎ¸ğclassÀÇ »ı¼ºÀÚ¸¦ ÀÇ¹Ì!
+		super(); // super¶ó´Â Method°¡ Default·Î »ı¼º
 	}
-	public String ìš”ë¦¬ë¥¼í•˜ë‹¤(String ì‹ìì¬){
-		return ì‹ìì¬;
+	
+	@Override // ¾È½áµµ Default·Î Àû¿ëµÇ³ª Àû¾îÁÖÀÚ!
+	public int ±Ş¿©¸¦ÁÖ´Ù(int ¿ù±Ş){
+		return ¿ù±Ş*3;
 	}
-	public String ìš”ë¦¬ë¥¼í•˜ë‹¤(String ì‹ìì¬, String ë¹„ë°€ì†ŒìŠ¤){
-		return ì‹ìì¬+ë¹„ë°€ì†ŒìŠ¤;
+	public String ¿ä¸®¸¦ÇÏ´Ù(String ½ÄÀÚÀç){
+		return ½ÄÀÚÀç;
+	}
+	public String ¿ä¸®¸¦ÇÏ´Ù(String ½ÄÀÚÀç, String ºñ¹Ğ¼Ò½º){
+		return ½ÄÀÚÀç+ºñ¹Ğ¼Ò½º;
 	}
 }
 public class Restaurant {
 	public static void main(String[] args) {
 		Chef chef = new Chef();
-		System.out.println(chef.ê¸‰ì—¬ë¥¼ì£¼ë‹¤(3));
+		System.out.println(chef.±Ş¿©¸¦ÁÖ´Ù(3));
 	}
 }
