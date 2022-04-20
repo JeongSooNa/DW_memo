@@ -3,6 +3,11 @@ package user_homework_for_interface;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author njs
+ * @Date 2022. 4. 20.
+ * comment : 출력하는 Main Controller Class
+ */
 public class MainController{
     public static void main(String args[]){
         

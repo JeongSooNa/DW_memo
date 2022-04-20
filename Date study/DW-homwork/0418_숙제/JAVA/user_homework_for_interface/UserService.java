@@ -2,6 +2,11 @@ package user_homework_for_interface;
 
 import java.util.List;
 
+/**
+ * @author njs
+ * @Date 2022. 4. 20.
+ * comment : User Logic 처리하는 Class
+ */
 public class UserService implements UserServiceImple{
     //1. 부서이름이 DEVELOP인 사원 급여를 2배 인상하시오.
 	@Override

@@ -1,5 +1,10 @@
 package user_homework_for_interface;
 
+/**
+ * @author njs
+ * @Date 2022. 4. 20.
+ * comment : UserVO
+ */
 public class UserVO{
     private String ename; //직원 이름
     private String dname; //부서 이름
