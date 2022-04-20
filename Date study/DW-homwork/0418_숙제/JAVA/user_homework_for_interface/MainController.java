@@ -17,7 +17,7 @@ public class MainController{
         list.add(new UserVO("King","MASTER",0));
 
         //여기서 문제 풀 것
-        UserService service = new UserService();
+        UserServiceImple service = new UserService();
         
         //1. 부서이름이 DEVELOP인 사원 급여를 2배 인상하시오.
         System.out.println("**1");
