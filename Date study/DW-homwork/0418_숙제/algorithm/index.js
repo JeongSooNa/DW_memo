@@ -7,9 +7,10 @@ var max=0;
 for(var i=0;i<array.length;i++) {
     if(max<i) max=i;
 }
+// array의 최솟값 찾기
 for(var i=0;i<array.length-1;i++){ // 최소값을 넣을 index
-    var min = max;
-    var minIndex = 0;
+    var min = array[i];
+    var minIndex = i;
     for(var j=i;j<array.length;j++){ // 최솟값
         if(array[j]<min){
             min = array[i];
