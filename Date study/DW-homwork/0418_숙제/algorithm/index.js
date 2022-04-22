@@ -18,7 +18,7 @@ for(var i=0;i<array.length-1;i++){ // 최소값을 넣을 index
     }
     // 자리 찾아가기
     var tmp = array[i];
-    array[i] = array[j];
-    array[j] = tmp;
+    array[i] = array[minIndex];
+    array[minIndex] = tmp;
 }
 console.log(array)
