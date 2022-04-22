@@ -11,16 +11,6 @@ import java.util.Locale;
 
 public class ShoppingService implements ShoppingServiceImpl{
 	
-	//8. 구매이력이 있는 회원만 조회.
-	@Override
-	public List<UserVO> getUserList(List<UserVO> list) {
-		// TODO Auto-generated method stub
-		List<UserVO> result = new ArrayList<UserVO>();
-		for(UserVO vo : list) {
-//			if(vo.getList().size() >=1) result.add(vo);
-		}
-		return result;
-	}
 	//2. 회원 중 앞글자에 S가 들어간 회원 정보 조회.
 	@Override
 	public List<UserVO> getFindByName(List<UserVO> list, String word) {
@@ -99,21 +89,34 @@ public class ShoppingService implements ShoppingServiceImpl{
 	@Override
 	public List<UserVO> getPurchaseRankerUser(List<UserVO> list, ProductVO vo, int userNo) {
 		// TODO Auto-generated method stub
-		int index = 0;
-		int addPoint = (int)(vo.getPrice()*0.05);
+		if(vo==null) vo = new ProductVO();
+		if(list==null) list = new ArrayList<UserVO>();
+		// 로직구현
+		int plusPoint = (int)(vo.getPrice()*0.05);
 		for(int i=0;i<list.size();i++) {
 			int point = list.get(i).getPoint();
 			if(list.get(i).getUserNo()==userNo) {
-				 list.get(i).setPoint(point+addPoint);
-//				 list.get(i).getList().add(vo);
-				 // 여기서 에러는 안뜨는데 NPE가 뜬다.
-				 // 왜? 모르겠다 왜.. list안에 list안에 vo를 넣을 뿐인데 안된다.
-				 // 맨 위의 8번도 마찬가지 이상하다.
-				 index = i;
+				List<ProductVO> pro = new ArrayList<ProductVO>();
+//				for(int j=0;j<list.get(i).getList().size();j++) {
+//					if(list.get(i).getList().get(j) != null) {						
+//						pro.add(list.get(i).getList().get(j));
+//					}
+//				}
+				list.get(i).setPoint(point+plusPoint);
+				list.get(i).setList(pro);
 			}
 		}
-		System.out.println(list.get(index).getList());
 		return list;
 	}
 
+	//8. 구매이력이 있는 회원만 조회.
+	@Override
+	public List<UserVO> getUserList(List<UserVO> list) {
+		// TODO Auto-generated method stub
+		List<UserVO> result = new ArrayList<UserVO>();
+		for(UserVO vo : list) {
+//			if(vo.getList().size()>=1) result.add(vo);
+		}
+		return result;
+	}
 }
