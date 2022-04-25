@@ -14,6 +14,6 @@ public class InsertionSort {
 				else break;
 			}
 		}
-		for(int i : array) System.out.println(i);
+		for(int i : array) System.out.print(i+" ");
 	}
 }
