@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 1200px;
+            margin: 50px auto;
+
+        }
+        h1{
+            text-align: center;
+        }
+        .emp-table{
+            width: 100%;
+            height: 400px;
+            box-shadow: 0 3px 7px grey;
+            background-color: #ffffff;
+        }
+        tr{
+            border: 1px solid #444444;
+        }
+        tr:nth-child(even){
+            background-color: #eaeaeb;
+        }
+        thead{
+            box-shadow: 0 1px 5px grey;
+        }
+        th{
+            padding: 1rem 2rem;
+            letter-spacing: 0.4rem;
+            font-size: 16px;
+            font-weight: 800;
+            text-align: center;
+        }
+        td{
+            font-size: 14px;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        a{
+            cursor: pointer;
+        }
+        .emp-enroll{
+            margin: 20px auto;
+            text-align: center;
+        }
+        .emp-enroll button{
+            padding: 2%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EMP 사원 LIST</h1>
+        <table class="emp-table">
+            <thead>
+                <tr>
+                    <th>사원번호</th>
+                    <th>사원이름</th>
+                    <th>직업</th>
+                    <th>급여</th>
+                    <th>입사날짜</th>
+                    <th>부서번호</th>
+                    <th>사수번호</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+
+            </tbody>
+        </table>
+        
+        <div class="emp-enroll">
+            <button id="btn" type="button">사원 추가</button>
+            <button id="btn-update" type="button">사원 수정</button>
+        </div>
+
+    </div>
+</body>
+<!-- JQuery Download -->
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script>
+    // AJAX는 JQuery에 있는 기능(함수)
+    var arrEmp = new Array();
+    $.ajax({
+        url : "http://localhost:8080/emp",
+        type : "GET",
+        dataType : "json",
+        success : function (response){
+            console.log(response);
+            console.log("부서번호가 30번인 사원 수 : "+getDeptnoCount(response)+"명");
+            // 이렇게 따로 넣어야 온전한 Json data가 생기네?
+            for(var i=0;i<response.length;i++){
+                arrEmp.push(response[i]);
+            }
+            // append 하기
+            var html = "";
+            for(var i=0;i<response.length;i++){
+                html += 
+                    "<tr>"+
+                    "<td><a onclick=removeEmp("+response[i].empno+")>"+response[i].empno+"</a></td>"+
+                    "<td>"+response[i].ename+"</td>"+
+                    "<td>"+response[i].job+"</td>"+
+                    "<td>"+response[i].sal+"</td>"+
+                    "<td>"+response[i].hiredate+"</td>"+
+                    "<td>"+response[i].deptno+"</td>"+
+                    "<td>"+response[i].mgr+"</td>"+
+                    "</tr>"
+            }
+            $('#data').append(html);
+        },
+        error : function (request, status, error){
+            console.log("에러 내용은 : "+error);
+        }
+    });
+    console.log(arrEmp);
+    // 부서번호가 30번인 사원 수 COUNT
+    function getDeptnoCount(response){
+        var count = 0;
+        for(var i=0;i<response.length;i++){
+            if(response[i].deptno==30) count++;
+        }
+        return count;
+    }
+    // empno 클릭하면 해당 data 지우기
+    // DB에서 삭제되기 때문에 주의! 다날아갈수도있다
+    // 정상수만 지우자
+    function removeEmp(empno){
+        // DELETE할 때는 조심히!
+        if(confirm('정말로 사원을 삭제하겠습니까?')){
+            $.ajax({
+                url : "http://localhost:8080/emp/empno/"+empno,
+                type : "DELETE",
+                dataType : "json",
+                success : function(response){
+                    console.log(response);
+                    // 새로고침
+                    location.reload(); // F5
+                }
+            })
+        }
+    }
+
+    // INSERT
+    $('#btn').click(function(){
+        var jsonData = {
+            "empno" : 1,
+            "ename" : "정상수",
+            "job" : "MANAGER",
+            "sal" : 5000,
+            "hiredate" : "2022-05-10",
+            "deptno" : 30,
+            "mgr" : 8002
+        }
+        $.ajax({
+            url : "http://localhost:8080/emp",
+            type : "POST",
+            // 보낼 때 json으로
+            contentType:"application/json",
+            dataType : "json",
+            data : JSON.stringify(jsonData),
+            success : function(response){
+                console.log(response);
+            }
+        })
+    })
+    
+    // UPDATE
+    $('#btn-update').click(function(){
+        var jsonData = {
+            "job" : "SALESMAN",
+            "sal" : 3000,
+        }
+        var empno = 9999
+        $.ajax({
+            url : "http://localhost:8080/api/v1/emp/"+empno,
+            type : "PATCH",
+            // 보낼 때 json으로
+            contentType:"application/json",
+            dataType : "json",
+            data : JSON.stringify(jsonData),
+            success : function(response){
+                console.log(response);
+                location.reload();
+            }
+        })
+    })
+
+
+    // null 혹은 0 인 data css 배경색 바꾸기
+    $("td:contains('null')").css('background-color','red')
+    window.onload = function() {
+        if($('.emp-table').find('td').val()==null || $('.emp-table').find('td').val()==0){
+            $('.emp-table').find('td').css('background-color','red')
+        }
+    }; // 아직 안된다..
+</script>
+</html>
