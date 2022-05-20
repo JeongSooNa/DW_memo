@@ -97,7 +97,7 @@ body{
 }
 
 .topbar{
-    width: 100%;
+    width: 98%;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -137,14 +137,6 @@ body{
     border: 1px solid var(--black2);
 }
 
-.user{
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
 .details{
     position: relative;
     width: 100%;
@@ -153,7 +145,7 @@ body{
 }
 .details .recentOrders{
     position: relative;
-    width: 80%;
+    width: 90%;
     min-height: 600px;
     background-color: var(--white);
     padding: 20px;
@@ -237,4 +229,119 @@ body{
     border-radius: 4px;
     font-size: 16x;
     font-weight: 500;
+}
+
+.cardBox{
+    position: relative;
+    width: 95%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card{
+    position: relative;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.cardBox .card .numbers{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--blue);
+}
+
+.cardBox .card .cardName{
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+.cardBox .card .iconBx{
+    font-size: 3.5em;
+    color: var(--black2);
+}
+
+.cardBox .card:hover{
+    background-color: var(--blue);
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx{
+    color: var(--white);
+}
+
+.write-popup{
+    z-index: 1;
+    display: none;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin : 40px auto;
+    width: 700px;
+    height: 500px;
+    background-color:var(--grey);
+    box-shadow: 0 7px 25px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+.editor{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 80%;
+}
+.input-box{
+    display: flex;
+    justify-content: space-around;
+}
+.input-box label{
+    padding: 1%;
+    font-size: 20px;
+    font-weight: 600;
+}
+.input-box input{
+    border: solid 2px #1E90FF;
+    border-radius: 5px;
+    padding: 1%;
+    font-size: 18px;
+    width: 70%;
+}
+.input-box textarea{
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: solid 2px #1E90FF;
+    border-radius: 5px;
+}
+
+.btn-area{
+    text-align: center;
+}
+
+.btn-cancel{
+    font-size: 18px;
+    background-color: #e74a3b;
+    padding: 2%;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.btn-success{
+    font-size: 18px;
+    background-color: #1cc88a;
+    padding: 2%;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 3px;
 }

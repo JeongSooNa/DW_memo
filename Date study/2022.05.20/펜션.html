@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>펜션예약</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 800px;
+            height: 900px;
+            margin: 10px auto;
+            
+        }
+        .main{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 10px;
+            text-align: center;
+        }
+        .reservation{
+            width: 350px;
+            height: 600px;
+        }
+        .reservation h4{
+            padding: 10px;
+        }
+        .reservation input{
+            height: 30px;
+            text-align: center;
+            border: 3px solid black;
+        }
+        .reservation h2{
+            padding: 20px;
+        }
+        .reservation h2 span{
+            background-color: skyblue;
+            border-radius: 10px;
+        }
+        .explanation{
+            width: 350px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .footer{
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .footer button{
+            width: 30%;
+            font-size: 30px;
+            border: 3px solid black;
+            border-radius: 30px;
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    입력사항 : 성명, 전화번호, 객실번호, 인원수, 입실날짜, 퇴실날짜
+    출력사항 : 단가, 총 금액
+    -->
+    <div class="container">
+        <h1>펜션 예약</h1>
+        <div class="main">
+            <div class="reservation">
+                <h4>예약자 성명</h4> <input type="text">
+                <h4>전화번호</h4> <input type="text">
+                <h4>객실 번호</h4> <input type="text">
+                <h4>인원 수</h4> <input type="number">
+                <h4>입실 날짜</h4> <input type="date">
+                <h4>퇴실 날짜</h4> <input type="date">
+                <h2>예약 단가 : <span>150,000 원</span></h2>
+                <h2>총 결제 금액 : <span>150,000 원</span></h2>
+            </div>
+            <div class="explanation">
+                <img src="images.jpg" alt="">
+                <h1>춘식 펜션</h1>
+                <p>
+                    귀여운 춘식이와 함께하는 뜨거운 여름<br><br><br><br><br>
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <button>예약</button>
+            <button>문의</button>
+            <button>후기</button>
+        </div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+
+    </script>
+</body>
+</html>
