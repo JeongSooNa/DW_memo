@@ -77,7 +77,7 @@
                 </label>
             </div>
             <div>
-                <a href="#" class="logout">로그아웃</a>
+                <a href="#" class="logout">Logout</a>
             </div>
         </div>
          <!-- cards -->
@@ -137,15 +137,16 @@
                             <th>조회 수</th>
                          </tr>
                      </thead>
-                     <tbody>
-                         <tr>
+                     <tbody id="data">
+                         <!-- <tr>
                              <td>1</td>
                              <td>현상원</td>
                              <td>점심시간이 너무 짧아요!</td>
                              <td>2022-05-19</td>
                              <td>2022-05-18</td>
                              <td><span class="high">8320</span></td>
-                         </tr>
+                         </tr> -->
+                         <!--
                          <tr>
                             <td>2</td>
                             <td>현상원</td>
@@ -169,9 +170,18 @@
                             <td>2022-05-19</td>
                             <td>2022-05-18</td>
                             <td><span class="row">22</span></td>
-                        </tr>
+                        </tr> -->
                      </tbody>
                  </table>
+                 <div class="pagination">
+                    <a href="#">Previous</a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">Next</a>
+                 </div>
              </div>
          </div>
     </div>
@@ -190,16 +200,106 @@
     $('.btn-cancel').click(function(){
         $('.write-popup').css('display', 'none');
     });
-    $('#contentSubmit').click(function(){
-        if(confirm('게시글을 작성하시겠습니까?')){
-            $('.write-popup').css('display', 'none');
-        }
-    });
     let list = document.querySelectorAll('.navigation li');
     function activeLink(){
         list.forEach((item) => {item.classList.remove('hovered')});
         this.classList.add('hovered');
     }
     list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
+</script>
+<script>
+
+    // 게시판 작성
+    $('#contentSubmit').click(function(){
+        if(confirm('게시글을 작성하시겠습니까?')){
+            var studentsId = 6;
+            var title = $('#title').val();
+            var content = $('#content').val();
+            // 빈칸 확인
+            if(title == ''){
+              alert('제목을 입력해주세요.')
+              return false;
+            }
+            if(content == ''){
+              alert('내용을 입력해주세요.')
+              return false;
+            }
+            // API 서버에 전송할 JSON 생성
+            var jsonData = {
+                studentsId : studentsId,
+                title : title,
+                content : content
+            }
+            // AJAX 세팅
+            $.ajax({
+              url : 'http://localhost:8080/api/v1/board',
+              type : 'POST',
+              contentType : 'application/json', // 서버에 json type으로 보낼 예정(요청)
+              dataType : 'json', // 서버 결과를 json으로 응답 받겠다.
+              data : JSON.stringify(jsonData),
+              success : function(response){
+                // 전송 한 data가 DB에 저장되었으면 alert
+                if(response>0){
+                    // 작성 화면 감추기
+                    $('.write-popup').css('display', 'none');
+                    // 작성한 글 지우기
+                    $('#title').val('');
+                    $('#content').val('');
+                    // location.reload(); 
+                        // getBoardList 함수 밖에 ajax를 작성하면
+                        // reload를 통해 게시판을 갱신시킬 수 있다.
+                    $('#data').children().remove();
+                    getBoardList();
+                } 
+            }
+        })
+    }
+    });
+
+    // 게시판 리스트 호출
+    getBoardList()
+    var arrBoard = new Array();
+    function getBoardList(){
+        // 이 안에 함수를 넣을 수도 있다!
+        // 밖으로 빼면 항상 실행된다.
+        $.ajax({
+            url : "http://localhost:8080/api/v1/board",
+            type : "GET",
+            dataType : "json",
+            success : function (response){
+                console.log(response);
+                // 이렇게 따로 넣어야 온전한 Json data가 생기네?
+                for(var i=0;i<response.length;i++){
+                    arrBoard.push(response[i]);
+                }
+                // append 하기
+                var html = "";
+                if(response.length > 0){
+                    for(var i=0;i<response.length;i++){
+                        // 조회수 별로 high, middle, row 구분
+                        // row      : 0 ~ 99
+                        // middle   : 100 ~ 999
+                        // high     : 1000 ~
+                        html += 
+                            "<tr>"+
+                            "<td>"+response[i].boardId+"</td>"+
+                            "<td>"+response[i].studentsName+"</td>"+
+                            "<td>"+response[i].title+"</td>"+
+                            "<td>"+response[i].updateAt+"</td>"+
+                            "<td>"+response[i].createAt+"</td>"+
+                            "<td><span class="+"row"+">"+"0"+"</span></td>"+
+                            "</tr>"
+                    }
+                }else{
+                    // 게시글 없을 때
+                    html += '<tr><td colspan=6 style="text-align: center;">게시글이 없습니다.</td></tr>';
+                }
+                $('#data').append(html);
+            },
+            error : function (request, status, error){
+                console.log("에러 내용은 : "+error);
+            }
+        });
+    }
 </script>
 </html>
