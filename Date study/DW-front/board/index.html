@@ -94,7 +94,7 @@
             <!-- search -->
             <div class="search">
                 <label>
-                    <input type="text" placeholder="작성자를 검색하세요...">
+                    <input id="searchBar" type="text" placeholder="작성자를 검색하세요...">
                 </label>
             </div>
             <div>
@@ -232,7 +232,14 @@
     list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
 </script>
 <script>
-    
+    $(document).keydown(function(e){
+        if(e.keyCode == 27){
+            $('.write-popup').css('display','none');
+            $('.update-popup').css('display','none');
+        }
+    })
+
+
     // 게시판 작성
     $('#contentSubmit').click(function(){
         if(confirm('게시글을 작성하시겠습니까?')){
@@ -421,5 +428,63 @@
             }
         });
     }
+
+    // 작성자 검색
+    // 검색창에 Enter를 눌렀을 때
+    $('#searchBar').keyup(function(key){
+        if(key.keyCode==13){
+            // input 값 가져오기
+            var search = $('#searchBar').val();
+            // ajax 호출
+            $.ajax({
+                url : "http://localhost:8080/api/v1/board/search?writer="+search,
+                type : "GET",
+                dataType : "json",
+                success : function (response){
+                    // 이렇게 따로 넣어야 온전한 Json data가 생기네?
+                    for(var i=0;i<response.length;i++){
+                        arrBoard.push(response[i]);
+                    }
+                    $('#data').children().remove();
+                    // append 하기
+                    var html = "";
+                    if(response.length > 0){
+                        for(var i=0;i<response.length;i++){
+                            // 조회수 별로 high, middle, row 구분
+                            // row      : 0 ~ 9
+                            // middle   : 10 ~ 19
+                            // high     : 20 ~
+                            var htmlCnt = "<td><span class="+"row"+">"+response[i].cnt+"</span></td>";
+                            if(response[i].cnt >= 10 && response[i].cnt < 20 ){
+                                htmlCnt = "<td><span class="+"middle"+">"+response[i].cnt+"</span></td>";
+                            }
+                            if(response[i].cnt >= 20){
+                                htmlCnt = "<td><span class="+"high"+">"+response[i].cnt+"</span></td>";
+                            }
+                            html += 
+                                "<tr onclick=getBoard("+response[i].boardId+")>"+
+                                "<td>"+response[i].boardId+"</td>"+
+                                "<td>"+response[i].studentsName+"</td>"+
+                                "<td>"+response[i].title+"</td>"+
+                                "<td>"+response[i].updateAt+"</td>"+
+                                "<td>"+response[i].createAt+"</td>"+
+                                htmlCnt+
+                                // "<td><span class="+"row"+">"+"0"+"</span></td>"+
+                                "</tr>"
+                        }
+                    }else{
+                        // 게시글 없을 때
+                        html += '<tr><td colspan=6 style="text-align: center;">게시글이 없습니다.</td></tr>';
+                    }
+                    $('#data').append(html);
+                },
+                error : function (request, status, error){
+                    console.log("에러 내용은 : "+error);
+                }
+            });
+        }
+    })
+    
+
 </script>
 </html>
