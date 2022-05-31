@@ -105,7 +105,7 @@
          <div class="cardBox">
              <div class="card">
                  <div>
-                    <div class="numbers">1,400</div>
+                    <div id="studentsCnt" class="numbers">1400</div>
                     <div class="cardName">학생 수</div>
                  </div>
                  <div class="iconBx">
@@ -114,7 +114,7 @@
              </div>
              <div class="card">
                 <div>
-                   <div class="numbers">500</div>
+                   <div id="boardCnt" class="numbers">1400</div>
                    <div class="cardName">게시글 수</div>
                 </div>
                 <div class="iconBx">
@@ -123,7 +123,7 @@
             </div>
             <div class="card">
                 <div>
-                   <div class="numbers">300</div>
+                   <div id="writerCnt" class="numbers">1400</div>
                    <div class="cardName">작성자 수</div>
                 </div>
                 <div class="iconBx">
@@ -132,7 +132,7 @@
             </div>
             <div class="card">
                 <div>
-                   <div class="numbers">2,800</div>
+                   <div id="viewsCnt" class="numbers">1400</div>
                    <div class="cardName">총 조회 수</div>
                 </div>
                 <div class="iconBx">
@@ -486,5 +486,25 @@
     })
     
 
+    // 페이징 구현
+
+
+
+    // 학생 수, 게시글 수, 작성자 수, 조회 수 통계
+    getBoardStatistics();
+    function getBoardStatistics(){
+        $.ajax({
+            url : "http://localhost:8080/api/v1/board/statistics",
+            type : 'GET',
+            dataType : 'json',
+            success : function(response){
+                console.log(response);
+                $('#boardCnt').text(response.boardCnt);
+                $('#studentsCnt').text(response.studentsCnt);
+                $('#viewsCnt').text(response.viewsCnt);
+                $('#writerCnt').text(response.writerCnt);
+            }
+        });
+    } // 왜 안나오야...
 </script>
 </html>
