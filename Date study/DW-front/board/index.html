@@ -195,13 +195,13 @@
                      </tbody>
                  </table>
                  <div class="pagination">
-                    <a href="#">Previous</a>
+                    <!-- <a href="#">Previous</a>
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
                     <a href="#">4</a>
                     <a href="#">5</a>
-                    <a href="#">Next</a>
+                    <a href="#">Next</a> -->
                  </div>
              </div>
          </div>
@@ -243,7 +243,7 @@
     // 게시판 작성
     $('#contentSubmit').click(function(){
         if(confirm('게시글을 작성하시겠습니까?')){
-            var studentsId = 6;
+            var studentsId = 8;
             var title = $('#title').val();
             var content = $('#content').val();
             // 빈칸 확인
@@ -286,48 +286,67 @@
         })
     }
     });
-
+    
     // 게시판 리스트 호출
-    getBoardList()
+    getBoardList(1,10);
     var arrBoard = new Array();
-    function getBoardList(){
+    function getBoardList(pageNum, pageSize){
         // 이 안에 함수를 넣을 수도 있다!
         // 밖으로 빼면 항상 실행된다.
         $.ajax({
-            url : "http://localhost:8080/api/v1/board",
+            url : "http://localhost:8080/api/v1/board?pageNum="+pageNum+"&pageSize="+pageSize,
             type : "GET",
             dataType : "json",
             success : function (response){
+                console.log(response)
+                var len = response.list.length;
                 // 이렇게 따로 넣어야 온전한 Json data가 생기네?
-                for(var i=0;i<response.length;i++){
-                    arrBoard.push(response[i]);
+                for(var i=0;i<len;i++){
+                    arrBoard.push(response.list[i]);
                 }
                 // append 하기
                 var html = "";
-                if(response.length > 0){
-                    for(var i=0;i<response.length;i++){
+                if(len > 0){
+                    for(var i=0;i<len;i++){
                         // 조회수 별로 high, middle, row 구분
                         // row      : 0 ~ 9
                         // middle   : 10 ~ 19
                         // high     : 20 ~
-                        var htmlCnt = "<td><span class="+"row"+">"+response[i].cnt+"</span></td>";
-                        if(response[i].cnt >= 10 && response[i].cnt < 20 ){
-                            htmlCnt = "<td><span class="+"middle"+">"+response[i].cnt+"</span></td>";
+                        var htmlCnt = "<td><span class="+"row"+">"+response.list[i].cnt+"</span></td>";
+                        if(response.list[i].cnt >= 10 && response.list[i].cnt < 20 ){
+                            htmlCnt = "<td><span class="+"middle"+">"+response.list[i].cnt+"</span></td>";
                         }
-                        if(response[i].cnt >= 20){
-                            htmlCnt = "<td><span class="+"high"+">"+response[i].cnt+"</span></td>";
+                        if(response.list[i].cnt >= 20){
+                            htmlCnt = "<td><span class="+"high"+">"+response.list[i].cnt+"</span></td>";
                         }
                         html += 
-                            "<tr onclick=getBoard("+response[i].boardId+")>"+
-                            "<td>"+response[i].boardId+"</td>"+
-                            "<td>"+response[i].studentsName+"</td>"+
-                            "<td>"+response[i].title+"</td>"+
-                            "<td>"+response[i].updateAt+"</td>"+
-                            "<td>"+response[i].createAt+"</td>"+
+                            "<tr onclick=getBoard("+response.list[i].boardId+")>"+
+                            "<td>"+response.list[i].boardId+"</td>"+
+                            "<td>"+response.list[i].studentsName+"</td>"+
+                            "<td>"+response.list[i].title+"</td>"+
+                            "<td>"+response.list[i].updateAt+"</td>"+
+                            "<td>"+response.list[i].createAt+"</td>"+
                             htmlCnt+
                             // "<td><span class="+"row"+">"+"0"+"</span></td>"+
                             "</tr>"
+                    } // end for
+
+                    // 페이징 화면 구현
+                    var paginationHtml = '';
+                    // 이전 페이지가 있을 때
+                    if(response.hasPreviousPage){ 
+                        paginationHtml += '<a href="#">Previous</a>';
                     }
+                    // 페이지 번호
+                    for(var i=0; i<response.navigatepageNums.length; i++){ // 페이지 번호 길이 만큼 for문 실행
+                        paginationHtml += '<a onclick="getBoardList('+response.navigatepageNums[i]+',10)" href="#">'+response.navigatepageNums[i]+'</a>';
+                    }
+                    // 다음 페이지가 있을 때
+                    if(response.hasNextPage){ 
+                        paginationHtml += '<a href="#">Next</a>';
+                    }
+                    $('.pagination').append(paginationHtml);
+
                 }else{
                     // 게시글 없을 때
                     html += '<tr><td colspan=6 style="text-align: center;">게시글이 없습니다.</td></tr>';
@@ -498,7 +517,6 @@
             type : 'GET',
             dataType : 'json',
             success : function(response){
-                console.log(response);
                 $('#boardCnt').text(response.boardCnt);
                 $('#studentsCnt').text(response.studentsCnt);
                 $('#viewsCnt').text(response.viewsCnt);
