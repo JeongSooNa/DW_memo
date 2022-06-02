@@ -232,6 +232,7 @@
     list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
 </script>
 <script>
+
     $(document).keydown(function(e){
         if(e.keyCode == 27){
             $('.write-popup').css('display','none');
@@ -280,7 +281,7 @@
                         // getBoardList 함수 밖에 ajax를 작성하면
                         // reload를 통해 게시판을 갱신시킬 수 있다.
                     $('#data').children().remove();
-                    getBoardList();
+                    getBoardList(1,10);
                 } 
             }
         })
@@ -298,7 +299,6 @@
             type : "GET",
             dataType : "json",
             success : function (response){
-                console.log(response)
                 var len = response.list.length;
                 // 이렇게 따로 넣어야 온전한 Json data가 생기네?
                 for(var i=0;i<len;i++){
@@ -335,23 +335,29 @@
                     var paginationHtml = '';
                     // 이전 페이지가 있을 때
                     if(response.hasPreviousPage){ 
-                        paginationHtml += '<a href="#">Previous</a>';
+                        paginationHtml += '<a onclick="getBoardList('+(response.pageNum-1)+','+pageSize+')" href="#">Previous</a>';
                     }
                     // 페이지 번호
                     for(var i=0; i<response.navigatepageNums.length; i++){ // 페이지 번호 길이 만큼 for문 실행
-                        paginationHtml += '<a onclick="getBoardList('+response.navigatepageNums[i]+',10)" href="#">'+response.navigatepageNums[i]+'</a>';
+                        paginationHtml += '<a id="pageNum'+response.navigatepageNums[i]+'" onclick="getBoardList('+response.navigatepageNums[i]+',10)" href="#">'+response.navigatepageNums[i]+'</a>';
                     }
                     // 다음 페이지가 있을 때
                     if(response.hasNextPage){ 
-                        paginationHtml += '<a href="#">Next</a>';
+                        paginationHtml += '<a onclick="getBoardList('+(response.pageNum+1)+','+pageSize+')" href="#">Next</a>';
                     }
+                    $('.pagination').children().remove();
                     $('.pagination').append(paginationHtml);
+                    //페이지 번호에 맞게 css 수정
+                    $('#pageNum'+pageNum).css('background-color','#287bff');
+                    $('#pageNum'+pageNum).css('color','#fff');
 
                 }else{
                     // 게시글 없을 때
                     html += '<tr><td colspan=6 style="text-align: center;">게시글이 없습니다.</td></tr>';
                 }
+                $('#data').children().remove();
                 $('#data').append(html);
+
             },
             error : function (request, status, error){
                 console.log("에러 내용은 : "+error);
@@ -403,6 +409,7 @@
                 // 게시물 상세화면 감추기
                 if(response > 0){
                     alert('수정 완료');
+                    getBoardList(1,10);
                     $('.update-popup').css('display','none');
                     location.reload();
                 }
@@ -441,7 +448,7 @@
                 // 게시물 상세화면 감추기
                 if(response > 0){
                     $('#data').children().remove();
-                    getBoardList();
+                    getBoardList(1,10);
                 }
 
             }
@@ -523,6 +530,8 @@
                 $('#writerCnt').text(response.writerCnt);
             }
         });
-    } // 왜 안나오야...
+    }
+
+    
 </script>
 </html>
