@@ -13,12 +13,12 @@
         <div class="logs-popup">
             <div class="editor">
                 <div class="input-box">
-                    <label for="studentsName">접속 IP : </label>
-                    <input id="studentsName" type="text" value="192.168.52.43" readonly>
+                    <label for="ip">접속 IP : </label>
+                    <input id="ip" type="text" value="192.168.52.43" readonly>
                 </div>
                 <div class="input-box">
-                    <label for="title">접속 시간 : </label>
-                    <input id="title" type="text" value="2022-06-02 09:10:58" readonly>
+                    <label for="createAt">접속 시간 : </label>
+                    <input id="createAt" type="text" value="2022-06-02 09:10:58" readonly>
                 </div>
                 <div class="input-box">
                     <div id="map" style="width:100%;height:350px;"></div>
@@ -97,7 +97,7 @@
                          </tr>
                      </thead>
                      <tbody id="boardData">
-                         <tr onclick="getPopup()">
+                         <!-- <tr onclick="getPopup()">
                             <td>1</td>
                             <td>192.158.0.252</td>
                             <td>/board</td>
@@ -117,17 +117,17 @@
                             <td>/board</td>
                             <td>GET</td>
                             <td>2022-05-19 13:33:02</td>
-                        </tr>
+                        </tr> -->
                      </tbody>
                  </table>
                  <div class="pagination">
-                    <a href="#">Previous</a>
+                    <!-- <a href="#">Previous</a>
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
                     <a href="#">4</a>
                     <a href="#">5</a>
-                    <a href="#">Next</a>
+                    <a href="#">Next</a> -->
                  </div>
              </div>
          </div>
@@ -150,33 +150,109 @@
     list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
 </script>
 <script>
-    function getPopup(){
+    function getPopup(logId){
         $('.logs-popup').css('display','block')
+        $.ajax({
+            url : "http://localhost:8080/api/v1/logs/logId/"+logId,
+            type : "GET",
+            dataType : "json",
+            success : function (response){
+                var latitude = response.latitude
+                var longitude = response.longitude
+
+                $('#ip').val(response.ip);
+                $('#createAt').val(response.create_at);
+
+                // 카카오맵
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = { 
+                    center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+                var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                // 마커가 표시될 위치입니다 
+                var markerPosition  = new kakao.maps.LatLng(latitude, longitude); 
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+                // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+                // marker.setMap(null);
+            }
+        });
     }
     $('.btn-cancel').click(function(){
         $('.logs-popup').css('display', 'none');
     });
-    // 카카오맵
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(36.3287362, 127.4230161), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
 
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    // 마커가 표시될 위치입니다 
-    var markerPosition  = new kakao.maps.LatLng(36.3287362, 127.4230161); 
+    function getBoard(logId){
+        // boardId html에 hidden 하기 : 수정,삭제에 이용하려고
+        // 화면 띄우기
+        $('.update-popup').css('display', 'block');
+        // ajax 작성
+        
+    }
 
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-        position: markerPosition
-    });
 
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
 
-    // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-    // marker.setMap(null);
+
+    // 
+    getLogsList(1,10);
+    function getLogsList(pageNum, pageSize){
+        $.ajax({
+            url : "http://localhost:8080/api/v1/logs?pageNum="+pageNum+"&pageSize="+pageSize,
+            type : "GET",
+            dataType : "json",
+            success : function (response){
+                var len = response.list.length;
+                var html = "";
+                if(len > 0){
+                    for(var i=0;i<len;i++){
+                        html += 
+                            "<tr onclick=getPopup("+response.list[i].log_id+")>"+
+                            "<td>"+response.list[i].log_id+"</td>"+
+                            "<td>"+response.list[i].ip+"</td>"+
+                            "<td>"+response.list[i].url+"</td>"+
+                            "<td>"+response.list[i].http_method+"</td>"+
+                            "<td>"+response.list[i].create_at+"</td>"+
+                            // "<td><span class="+"row"+">"+"0"+"</span></td>"+
+                            "</tr>"
+                    } // end for
+
+                    // 페이징 화면 구현
+                    var paginationHtml = '';
+                    // 이전 페이지가 있을 때
+                    if(response.hasPreviousPage){ 
+                        paginationHtml += '<a onclick="getLogsList('+(response.pageNum-1)+','+pageSize+')" href="#">Previous</a>';
+                    }
+                    // 페이지 번호
+                    for(var i=0; i<response.navigatepageNums.length; i++){ // 페이지 번호 길이 만큼 for문 실행
+                        paginationHtml += '<a id="pageNum'+response.navigatepageNums[i]+'" onclick="getLogsList('+response.navigatepageNums[i]+',10)" href="#">'+response.navigatepageNums[i]+'</a>';
+                    }
+                    // 다음 페이지가 있을 때
+                    if(response.hasNextPage){ 
+                        paginationHtml += '<a onclick="getLogsList('+(response.pageNum+1)+','+pageSize+')" href="#">Next</a>';
+                    }
+                    $('.pagination').children().remove();
+                    $('.pagination').append(paginationHtml);
+                    //페이지 번호에 맞게 css 수정
+                    $('#pageNum'+pageNum).css('background-color','#287bff');
+                    $('#pageNum'+pageNum).css('color','#fff');
+
+                }else{
+                    // 게시글 없을 때
+                    html += '<tr><td colspan=6 style="text-align: center;">게시글이 없습니다.</td></tr>';
+                }
+                $('#boardData').children().remove();
+                $('#boardData').append(html);
+            },
+            error : function (request, status, error){
+                console.log("에러 내용 : "+error);
+            }
+        })
+    }
 </script>
 </html>

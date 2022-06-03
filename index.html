@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="friday" type="text" value="오늘은 금요일">
+</body>
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"
+></script>
+<script>
+    var value = $('#friday').val();
+    console.log(value);
+
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/board?pageNum=1&pageSize=10',
+            type : 'GET',
+            dataType: 'json',
+            success: function (response) {//then (node.js)
+              var html = '<input id="monday" type="text" value="오늘은 월요일">';
+              $('body').append(html);
+            }
+        });
+
+    var value2 = $('#monday').val();
+    console.log(value2);
+    
+</script>
+</html>

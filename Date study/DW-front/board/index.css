@@ -275,7 +275,7 @@ body{
 .cardBox .card:hover .iconBx{
     color: var(--white);
 }
-
+/* 글 작성 */
 .write-popup{
     z-index: 1;
     display: none;
@@ -290,6 +290,7 @@ body{
     border-radius: 5px;
 }
 .editor{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -345,11 +346,72 @@ body{
     color: var(--white);
     border-radius: 3px;
 }
+.logs-popup{
+    z-index: 10;
+    display: none;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin : 40px auto;
+    width: 700px;
+    height: 500px;
+    background-color:var(--grey);
+    box-shadow: 0 7px 25px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+/* 글 수정 */
+.update-popup{
+    z-index: 1;
+    display: none;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin : 40px auto;
+    width: 700px;
+    height: 500px;
+    background-color:var(--grey);
+    box-shadow: 0 7px 25px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+.btn-update{
+    font-size: 18px;
+    background-color: #f6c23e;
+    padding: 2%;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.btn-delete{
+    font-size: 18px;
+    background-color: #36b9cc;
+    padding: 2%;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 3px;
+}
+.close{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: -10px;
+}
+.btn-close{
+    font-size: 18px;
+    background-color: #5a5c69;
+    padding: 2%;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 3px;
+}
+/* pagination css*/
 .pagination{
     text-align: center;
     margin-top: 50px;
 }
-/* pagination css*/
+
 .pagination a{
     padding: 0.5rem 0.75rem;
     text-decoration: none;
