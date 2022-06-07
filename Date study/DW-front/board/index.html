@@ -244,7 +244,7 @@
     // 게시판 작성
     $('#contentSubmit').click(function(){
         if(confirm('게시글을 작성하시겠습니까?')){
-            var studentsId = 8;
+            var studentsId = 1;
             var title = $('#title').val();
             var content = $('#content').val();
             // 빈칸 확인
@@ -467,10 +467,6 @@
                 type : "GET",
                 dataType : "json",
                 success : function (response){
-                    // 이렇게 따로 넣어야 온전한 Json data가 생기네?
-                    for(var i=0;i<response.length;i++){
-                        arrBoard.push(response[i]);
-                    }
                     $('#data').children().remove();
                     // append 하기
                     var html = "";
