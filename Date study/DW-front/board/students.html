@@ -80,6 +80,7 @@
             <div class="search">
                 <label>
                     <input id="searchBar" type="text" placeholder="학생이름을 검색하세요..." >
+                    <input id="keyword" type="hidden" value="null">
                 </label>
             </div>
             <div>
@@ -150,8 +151,13 @@
     // get Students
     getStudentsList(1,10);
     function getStudentsList(pageNum, pageSize){
+        var controllerUrl = "http://localhost:8080/api/v1/students/map?pageNum="+pageNum+"&pageSize="+pageSize;
+        var keyword = $('#keyword').val();
+        if(keyword != 'null'){
+            controllerUrl = "http://localhost:8080/api/v1/students/search?writer="+keyword+"&pageNum="+pageNum+"&pageSize="+pageSize;
+        }
         $.ajax({
-            url : "http://localhost:8080/api/v1/students/map?pageNum="+pageNum+"&pageSize="+pageSize,
+            url : controllerUrl,
             type : "GET",
             dataType : "json",
             success : function(response){
@@ -267,24 +273,24 @@
     })
 
     // 검색
+    // getStudentsList에서 input hidden 을 이용해 url을 변경해 검색
     $('#searchBar').keyup(function(key){
+        var pageNum = 1;
+        var pageSize = 10;
         if(key.keyCode==13){
             // input 값 가져오기
             // ajax 호출
-            var search = $('#searchBar').val();
-            var pageNum = 1;
-            var pageSize = 10;
-            searchStu(pageNum,pageSize,search);
-        }
-    })
-    
-    function searchStu(pageNum,pageSize,search){
-        $.ajax({
-            url : "http://localhost:8080/api/v1/students/search?writer="+search+"&pageNum="+pageNum+"&pageSize="+pageSize,
-            type : "GET",
-            dataType : "json",
-            success : function (response){
-                var len = response.list.length;
+            var search = $('#searchBar').val().trim();
+            if(search != ''){
+                $('#keyword').val(search);
+            }
+            $.ajax({
+                url : "http://localhost:8080/api/v1/students/search?writer="+search+"&pageNum="+pageNum+"&pageSize="+pageSize,
+                type : "GET",
+                dataType : "json",
+                success : function (response){
+                    var len = response.list.length;
+                console.log(response.list)
                 var html = "";
                 if(len>0){
                     for(var i=0;i<len;i++){
@@ -319,13 +325,12 @@
                     html += '<tr><td colspan=6 style="text-align: center;">학생이 없습니다.</td></tr>';
                 }
                 $('#boardData').children().remove();
-                $('#boardData').append(html);
-            },
-            error : function (request, status, error){
-                console.log("에러 내용은 : "+error);
-            }
-        });
-    }
+                $('#boardData').append(html); 
+                }
+            })
+        }
+    })
+    
     
 </script>
 </html>
