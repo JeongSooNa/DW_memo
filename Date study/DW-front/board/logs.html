@@ -207,6 +207,7 @@
             type : "GET",
             dataType : "json",
             success : function (response){
+                console.log(response)
                 var len = response.list.length;
                 var html = "";
                 if(len > 0){
